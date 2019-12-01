@@ -1,5 +1,5 @@
-import { CounterState } from './counter/counter.reducer';
+import { LoginState } from './login/login.reducer';
 
 export interface RootState {
-  counter: CounterState;
+  login: LoginState;
 }

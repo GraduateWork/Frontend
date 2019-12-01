@@ -1,0 +1,15 @@
+<app-header></app-header>
+<h1>Sign in component</h1>
+<ion-content>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <label>
+      Username:
+      <input type="text" formControlName="username">
+    </label>
+    <label>
+      Password:
+      <input type="text" formControlName="password">
+    </label>
+    <button type="submit" [disabled]="signInForm.invalid">Submit</button>
+  </form>
+</ion-content>
