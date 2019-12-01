@@ -9,12 +9,12 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
-        path: 'calendar',
+        path: 'search',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('./pages/calendar/calendar.module').then(m => m.CalendarPageModule)
+              import('./pages/search/search.module').then(m => m.SearchPageModule)
           }
         ]
       },
@@ -29,25 +29,25 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'search',
+        path: 'calendar',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('./pages/search/search.module').then(m => m.SearchPageModule)
+              import('./pages/calendar/calendar.module').then(m => m.CalendarPageModule)
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/home/calendar',
+        redirectTo: '/home/search',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home/calendar',
+    redirectTo: '/home/search',
     pathMatch: 'full'
   }
 ];

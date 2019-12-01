@@ -13,6 +13,8 @@ import { HomePage } from './home.page';
     FormsModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+  ]
 })
 export class HomePageModule {}

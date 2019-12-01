@@ -1,5 +1,5 @@
-import { counterReducer } from './counter/counter.reducer';
+import { loginReducer } from './login/login.reducer';
 
 export const rootReducers = {
-  counter: counterReducer,
+  login: loginReducer,
 };
