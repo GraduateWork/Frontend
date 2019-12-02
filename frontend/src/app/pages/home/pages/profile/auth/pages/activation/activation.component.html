@@ -1,0 +1,37 @@
+<app-header></app-header>
+<ion-content>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="3">
+      <ion-img src="assets/icons/activation.svg"></ion-img>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center ion-margin-bottom">
+      <ion-col size="8" class="ion-text-center">
+        <ion-text class="bold smallerFont">
+          Введите код активации, чтобы продолжить работу.
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="10">
+      <ion-label position="stacked" class="ion-padding-start">Код Активации</ion-label>
+      <ion-item lines="none" class="rounded">
+          <ion-input type="text" [formControl]="code"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-end">
+    <ion-col size="auto">
+      <ion-button
+        class="bold"
+        size="large"
+        fill="clear"
+        color="secondary"
+        (click)="onSubmit()"
+        [disabled]="code.invalid"
+      >
+        Активировать
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import { RootState } from '@store/root.state';
+import { signUpStarted } from '@store/login/login.actions';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,12 +17,15 @@ export class SignUpComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor() { }
+  constructor(private store$: Store<RootState>) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
+    const username = this.signUpForm.get('username').value;
+    const email = this.signUpForm.get('email').value;
+    const password = this.signUpForm.get('password').value;
+    this.store$.dispatch(signUpStarted({ username, email, password }));
   }
 }

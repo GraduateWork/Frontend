@@ -7,6 +7,7 @@ import { AuthRoutingModule } from './auth-rouitng.module';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SharedModule } from '@shared/shared.module';
+import { ActivationComponent } from './pages/activation/activation.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { SharedModule } from '@shared/shared.module';
   ],
   declarations: [
     SignUpComponent,
+    ActivationComponent,
     SignInComponent,
   ]
 })
