@@ -24,3 +24,52 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+  font-family: 'Cera Pro Regular';
+  src: url('./assets/fonts/CeraPro-Regular.eot');
+  src: url('./assets/fonts/CeraPro-Regular.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/CeraPro-Regular.woff') format('woff'),
+  url('./assets/fonts/CeraPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cera Pro Bold';
+  src: url('./assets/fonts/CeraPro-Bold.eot');
+  src: url('./assets/fonts/CeraPro-Bold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/CeraPro-Bold.woff') format('woff'),
+  url('./assets/fonts/CeraPro-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+  
+* {
+  font-family: 'Cera Pro Regular';
+}
+
+// CUSTOM CLASSES
+
+.bold {
+  font-family: 'Cera Pro Bold';
+}
+
+.smallerFont {
+  font-size: 0.85rem;
+}
+
+.smallFont {
+  font-size: 0.75rem;
+}
+
+ion-item.rounded {
+  --border-radius: 2rem;
+  --border-color: var(--ion-color-primary);
+  --border-width: 1px;
+}
+
+.linkWithLine {
+  border-bottom: 1px solid var(--ion-color-secondary);
+  font-size: 0.65rem;
+}

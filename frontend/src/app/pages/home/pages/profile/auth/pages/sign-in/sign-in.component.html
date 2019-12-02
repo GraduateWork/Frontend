@@ -1,0 +1,69 @@
+<app-header></app-header>
+<ion-content>
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3">
+          <ion-img src="assets/icons/signIn.svg"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="8" class="ion-text-center">
+          <ion-text class="bold smallerFont">
+            Войдите в личный кабинет, чтобы продолжить работу.
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-margin-bottom">
+        <ion-col size="auto">
+          <ion-button 
+            class="linkWithLine" 
+            size="small" 
+            fill="clear" 
+            color="secondary"
+            [routerLink]="['/home/profile/sign-up']"
+          >
+            Зарегистрироваться
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-margin-bottom">
+        <ion-col size="6" class="ion-text-center">
+          <ion-text>
+            Мы соскучились, пока тебя не было!
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="10">
+          <ion-label position="stacked" class="ion-padding-start">Имя пользователя</ion-label>
+          <ion-item lines="none" class="rounded">
+              <ion-input type="text" formControlName="username"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="10">
+          <ion-label position="stacked" class="ion-padding-start">Пароль</ion-label>
+          <ion-item lines="none" class="rounded">
+            <ion-input type="text" formControlName="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-end">
+        <ion-col size="auto">
+          <ion-button
+            class="bold"
+            size="large"
+            fill="clear"
+            color="secondary"
+            type="submit"
+            [disabled]="signInForm.invalid"
+          >
+            Войти в кабинет
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

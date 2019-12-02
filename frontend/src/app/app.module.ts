@@ -11,8 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootModule as RootStoreModule } from '@store/root.module';
-import { LoginInterceptor } from 'app/pages/auth/login.interceptor';
-import { AuthModule } from './pages/auth/auth.module';
+import { AuthInterceptor } from 'app/pages/home/pages/profile/auth/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,13 +22,12 @@ import { AuthModule } from './pages/auth/auth.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     RootStoreModule,
-    AuthModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: HTTP_INTERCEPTORS, useClass: LoginInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
