@@ -8,6 +8,8 @@ import {
   changeIsActivated,
   signInDone,
   signInFailure,
+  signOutDone,
+  signOutFailure,
   activationDone,
   activationFailure
 } from './login.actions';
@@ -49,6 +51,12 @@ const _loginReducer = createReducer(initialState,
   on(signInFailure, (state, action) => {
     return { ...state };
   }),
+  on(signOutDone, (state, action) => {
+    return { ...initialState };
+  }),
+  on(signOutFailure, (state, action) => {
+    return { ...state };
+  })
 );
 
 export function loginReducer(state: LoginState, action: Action) {

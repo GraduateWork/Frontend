@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { of, concat, EMPTY } from 'rxjs';
+import { of, concat } from 'rxjs';
 import { map, switchMap, catchError, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootState } from '@store/root.state';
@@ -13,6 +13,9 @@ import {
   signInStarted,
   signInDone,
   signInFailure,
+  signOutStarted,
+  signOutDone,
+  signOutFailure,
   changeIsSignIn,
   activationStarted,
   activationDone,
@@ -83,6 +86,20 @@ export class LoginEffects {
     }),
   ));
 
+  signOutEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(signOutStarted),
+    switchMap(action => {
+      return this.authService.signOut().pipe(
+        map(response => {
+            return signOutDone();
+        }),
+        catchError(error => {
+          return of(signOutFailure());
+        }),
+      );
+    }),
+  ));
+
   navigateAfterSignUpEffect$ = createEffect(() => this.actions$.pipe(
     ofType(signUpDone),
     tap(() => {
@@ -101,6 +118,13 @@ export class LoginEffects {
     ofType(signInDone),
     tap(() => {
       this.router.navigate(['/home/profile']);
+    }),
+  ), { dispatch: false });
+
+  navigateAfterSignOutEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(signOutDone),
+    tap(() => {
+      this.router.navigate(['/home']);
     }),
   ), { dispatch: false });
 

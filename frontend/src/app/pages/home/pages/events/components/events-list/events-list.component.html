@@ -1,0 +1,38 @@
+<ion-grid>
+  <ion-row *ngFor="let event of events" class="event event-border">
+    <ion-col size="3" class="ion-no-padding">
+      <ion-img [src]="event.pictureUrl"></ion-img>
+    </ion-col>
+    <ion-col size="9" class="ion-no-padding">
+      <ion-grid class="ion-no-padding ion-no-margin no-padding">
+        <ion-row>
+          <ion-col>
+            <ion-text class="bold">
+              {{ event.name }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-text class="smallFont">
+              {{ getFormatDate(event) }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+              <ion-segment color="secondary">
+                <ion-segment-button
+                  layout="icon-start" 
+                  *ngFor="let tag of event.tags" 
+                  class="ion-no-padding ion-no-margin"
+                >
+                  <ion-label>{{ tag }}</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>

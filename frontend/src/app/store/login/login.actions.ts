@@ -18,6 +18,10 @@ const SIGN_IN_STARTED = `${prefix} Sign In Started`;
 const SIGN_IN_DONE = `${prefix} Sign In Done`;
 const SIGN_IN_FAILURE = `${prefix} Sign In Failure`;
 
+const SIGN_OUT_STARTED = `${prefix} Sign Out Started`;
+const SIGN_OUT_DONE = `${prefix} Sign Out Done`;
+const SIGN_OUT_FAILURE = `${prefix} Sign Out Failure`;
+
 const CHANGE_IS_SIGN_IN = `${prefix} Change Is Sign In`;
 const CHANGE_IS_ACTIVATED = `${prefix} Change Is Activated`;
 
@@ -33,6 +37,10 @@ export const activationFailure = createAction(ACTIVATION_FAILURE);
 export const signInStarted = createAction(SIGN_IN_STARTED, props<SignInData>());
 export const signInDone = createAction(SIGN_IN_DONE, props<User>());
 export const signInFailure = createAction(SIGN_IN_FAILURE);
+
+export const signOutStarted = createAction(SIGN_OUT_STARTED);
+export const signOutDone = createAction(SIGN_OUT_DONE);
+export const signOutFailure = createAction(SIGN_OUT_FAILURE);
 
 export const changeIsSignIn = createAction(CHANGE_IS_SIGN_IN, props<{ payload: boolean }>());
 export const changeIsActivated = createAction(CHANGE_IS_ACTIVATED, props<{ payload: boolean }>());
