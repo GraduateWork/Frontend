@@ -9,20 +9,17 @@ import { RootState } from '@store/root.state';
 import {
   signUpStarted,
   signUpDone,
-  signUpFailure,
   signInStarted,
   signInDone,
-  signInFailure,
   signOutStarted,
   signOutDone,
-  signOutFailure,
   changeIsSignIn,
   activationStarted,
   activationDone,
-  activationFailure,
   changeIsActivated
 } from '@store/login/login.actions';
 import { AuthService } from 'app/pages/home/pages/profile/auth/auth.service';
+import { setError } from '@store/error/error.actions';
 
 @Injectable()
 export class LoginEffects {
@@ -36,7 +33,7 @@ export class LoginEffects {
           });
         }),
         catchError(error => {
-          return of(signUpFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         }),
       );
     }),
@@ -59,7 +56,7 @@ export class LoginEffects {
           );
         }),
         catchError(error => {
-          return of(activationFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         })
       );
     })
@@ -80,7 +77,7 @@ export class LoginEffects {
           );
         }),
         catchError(error => {
-          return of(signInFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         }),
       );
     }),
@@ -94,7 +91,7 @@ export class LoginEffects {
             return signOutDone();
         }),
         catchError(error => {
-          return of(signOutFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         }),
       );
     }),

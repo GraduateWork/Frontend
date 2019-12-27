@@ -2,7 +2,6 @@ import { createReducer, on, Action } from '@ngrx/store';
 
 import {
   getEventsDone,
-  getEventsFailure,
 } from './events.actions';
 import { Event } from '@models/event.model';
 
@@ -17,9 +16,6 @@ export const initialState: EventsState = {
 const _eventsReducer = createReducer(initialState,
   on(getEventsDone, (state, { type, payload }) => {
     return { ...state, events: [ ...payload ] };
-  }),
-  on(getEventsFailure, (state, action) => {
-    return { ...state };
   }),
 );
 

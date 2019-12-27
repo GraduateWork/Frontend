@@ -6,8 +6,9 @@ import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
 import { RootState } from '@store/root.state';
-import { getEventsStarted, getEventsDone, getEventsFailure } from './events.actions';
+import { getEventsStarted, getEventsDone } from './events.actions';
 import { EventsService } from 'app/pages/home/pages/events/events.service';
+import { setError } from '@store/error/error.actions';
 
 @Injectable()
 export class EventsEffects {
@@ -19,7 +20,7 @@ export class EventsEffects {
           return getEventsDone({ payload: events });
         }),
         catchError(error => {
-          return of(getEventsFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         })
       );
     })
