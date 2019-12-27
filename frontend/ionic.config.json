@@ -1,5 +1,7 @@
 {
-  "name": "frontend",
-  "integrations": {},
-  "type": "angular"
+  "name": "placard",
+  "type": "angular",
+  "integrations": {
+    "capacitor": {}
+  }
 }

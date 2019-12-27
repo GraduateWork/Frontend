@@ -9,6 +9,16 @@ const routes: Routes = [
     component: HomePage,
     children: [
       {
+        path: 'events',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('./pages/events/events.module').then(m => m.EventsPageModule)
+          }
+        ]
+      },
+      {
         path: 'search',
         children: [
           {
@@ -49,16 +59,16 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/home/search',
+        redirectTo: '/home/events',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/home/search',
+    redirectTo: '/home/events',
     pathMatch: 'full'
-  }
+  },
 ];
 
 @NgModule({

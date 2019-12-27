@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { 
+import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
@@ -11,23 +11,18 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class ErrorInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    req = req.clone({
-      withCredentials: true,
-    });
-
     return next.handle(req).pipe(
       catchError(err => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            this.router.navigate(['/home/profile/sign-in']);
+          if (err.error) {
+            return throwError(err.error.message);
           }
         }
-
-        return throwError(err);
+        return throwError('Что-то пошло не так');
       })
     );
   }

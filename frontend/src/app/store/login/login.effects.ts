@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { of, concat, EMPTY } from 'rxjs';
+import { of, concat } from 'rxjs';
 import { map, switchMap, catchError, tap, withLatestFrom } from 'rxjs/operators';
 
 import { RootState } from '@store/root.state';
 import {
   signUpStarted,
   signUpDone,
-  signUpFailure,
   signInStarted,
   signInDone,
-  signInFailure,
+  signOutStarted,
+  signOutDone,
   changeIsSignIn,
   activationStarted,
   activationDone,
-  activationFailure,
   changeIsActivated
 } from '@store/login/login.actions';
 import { AuthService } from 'app/pages/home/pages/profile/auth/auth.service';
+import { setError } from '@store/error/error.actions';
 
 @Injectable()
 export class LoginEffects {
@@ -33,7 +33,7 @@ export class LoginEffects {
           });
         }),
         catchError(error => {
-          return of(signUpFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         }),
       );
     }),
@@ -56,7 +56,7 @@ export class LoginEffects {
           );
         }),
         catchError(error => {
-          return of(activationFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
         })
       );
     })
@@ -77,7 +77,21 @@ export class LoginEffects {
           );
         }),
         catchError(error => {
-          return of(signInFailure());
+          return of(setError({ message: error, time: new Date().getDate() }));
+        }),
+      );
+    }),
+  ));
+
+  signOutEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(signOutStarted),
+    switchMap(action => {
+      return this.authService.signOut().pipe(
+        map(response => {
+            return signOutDone();
+        }),
+        catchError(error => {
+          return of(setError({ message: error, time: new Date().getDate() }));
         }),
       );
     }),
@@ -101,6 +115,13 @@ export class LoginEffects {
     ofType(signInDone),
     tap(() => {
       this.router.navigate(['/home/profile']);
+    }),
+  ), { dispatch: false });
+
+  navigateAfterSignOutEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(signOutDone),
+    tap(() => {
+      this.router.navigate(['/home']);
     }),
   ), { dispatch: false });
 

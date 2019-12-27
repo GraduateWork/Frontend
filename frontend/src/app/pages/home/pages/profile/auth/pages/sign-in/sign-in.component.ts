@@ -11,6 +11,9 @@ import { signInStarted } from '@store/login/login.actions';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+  passwordType = 'password';
+  isPasswordShown = false;
+
   signInForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -24,5 +27,15 @@ export class SignInComponent implements OnInit {
     const username = this.signInForm.get('username').value;
     const password = this.signInForm.get('password').value;
     this.store$.dispatch(signInStarted({ username, password }));
+  }
+
+  togglePassword() {
+    if (this.isPasswordShown) {
+      this.isPasswordShown = false;
+      this.passwordType = 'password';
+    } else {
+      this.isPasswordShown = true;
+      this.passwordType = 'string';
+    }
   }
 }
