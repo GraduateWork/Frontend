@@ -1,24 +1,13 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import {
-  setError,
-  resetError
-} from './error.actions';
-import { Error } from '@models/error.model';
-
-export interface ErrorState {
-  error: Error;
-}
-
-export const initialState: ErrorState = {
-  error: null,
-};
+import * as actions from './actions';
+import { ErrorState, initialState } from './state';
 
 const _errorReducer = createReducer(initialState,
-  on(setError, (state, { type, ...payload }) => {
+  on(actions.setError, (state, { type, ...payload }) => {
     return { ...state, error: { ...payload } };
   }),
-  on(resetError, (state, action) => {
+  on(actions.resetError, () => {
     return initialState;
   }),
 );

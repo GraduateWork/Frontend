@@ -1,20 +1,10 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import {
-  getEventsDone,
-} from './events.actions';
-import { Event } from '@models/event.model';
-
-export interface EventsState {
-  events: Event[];
-}
-
-export const initialState: EventsState = {
-  events: [],
-};
+import { getEventsDone } from './actions';
+import { EventsState, initialState } from './state';
 
 const _eventsReducer = createReducer(initialState,
-  on(getEventsDone, (state, { type, payload }) => {
+  on(getEventsDone, (state, { payload }) => {
     return { ...state, events: [ ...payload ] };
   }),
 );

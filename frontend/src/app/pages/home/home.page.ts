@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { RootState } from '@store/root.state';
-import { errorSelector } from '@store/error/error.selector';
+import { errorSelector } from '@store/error/selector';
 import { Error } from '@models/error.model';
 
 @Component({

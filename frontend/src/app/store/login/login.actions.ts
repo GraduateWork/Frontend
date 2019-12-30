@@ -3,37 +3,20 @@ import { createAction, props } from '@ngrx/store';
 import { SignUpData } from '@models/sign-up.model';
 import { User } from '@models/user.model';
 import { SignInData } from '@models/sign-in.model';
+import * as types from './action-types';
 
-const prefix = '[Login]';
+export const signUpStarted = createAction(types.SIGN_UP_STARTED, props<SignUpData>());
+export const signUpDone = createAction(types.SIGN_UP_DONE, props<User>());
 
-const SIGN_UP_STARTED = `${prefix} Sign Up Started`;
-const SIGN_UP_DONE = `${prefix} Sign Up Done`;
+export const activationStarted = createAction(types.ACTIVATION_STARTED, props<{ payload: string }>());
+export const activationDone = createAction(types.ACTIVATION_DONE, props<User>());
 
-const ACTIVATION_STARTED = `${prefix} Activation Started`;
-const ACTIVATION_DONE = `${prefix} Activation Done`;
+export const signInStarted = createAction(types.SIGN_IN_STARTED, props<SignInData>());
+export const signInDone = createAction(types.SIGN_IN_DONE, props<User>());
 
-const SIGN_IN_STARTED = `${prefix} Sign In Started`;
-const SIGN_IN_DONE = `${prefix} Sign In Done`;
+export const signOutStarted = createAction(types.SIGN_OUT_STARTED);
+export const signOutDone = createAction(types.SIGN_OUT_DONE);
 
-const SIGN_OUT_STARTED = `${prefix} Sign Out Started`;
-const SIGN_OUT_DONE = `${prefix} Sign Out Done`;
-
-const CHANGE_IS_SIGN_IN = `${prefix} Change Is Sign In`;
-const CHANGE_IS_ACTIVATED = `${prefix} Change Is Activated`;
-
-
-export const signUpStarted = createAction(SIGN_UP_STARTED, props<SignUpData>());
-export const signUpDone = createAction(SIGN_UP_DONE, props<User>());
-
-export const activationStarted = createAction(ACTIVATION_STARTED, props<{ payload: string }>());
-export const activationDone = createAction(ACTIVATION_DONE, props<User>());
-
-export const signInStarted = createAction(SIGN_IN_STARTED, props<SignInData>());
-export const signInDone = createAction(SIGN_IN_DONE, props<User>());
-
-export const signOutStarted = createAction(SIGN_OUT_STARTED);
-export const signOutDone = createAction(SIGN_OUT_DONE);
-
-export const changeIsSignIn = createAction(CHANGE_IS_SIGN_IN, props<{ payload: boolean }>());
-export const changeIsActivated = createAction(CHANGE_IS_ACTIVATED, props<{ payload: boolean }>());
+export const changeIsSignIn = createAction(types.CHANGE_IS_SIGN_IN, props<{ payload: boolean }>());
+export const changeIsActivated = createAction(types.CHANGE_IS_ACTIVATED, props<{ payload: boolean }>());
 
