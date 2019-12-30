@@ -1,44 +1,25 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
-import { User } from '@models/user.model';
-import {
-  signUpDone,
-  changeIsSignIn,
-  changeIsActivated,
-  signInDone,
-  signOutDone,
-  activationDone,
-} from './login.actions';
-
-export interface LoginState {
-  isSignIn: boolean;
-  isActivated: boolean;
-  user: User;
-}
-
-export const initialState: LoginState = {
-  isSignIn: false,
-  isActivated: false,
-  user: null,
-};
+import * as actions from './login.actions';
+import { LoginState, initialState } from './state';
 
 const _loginReducer = createReducer(initialState,
-  on(signUpDone, (state, { type, ...payload }) => {
+  on(actions.signUpDone, (state, { type, ...payload }) => {
     return { ...state, user: { ...payload } };
   }),
-  on(activationDone, (state, { type, ...payload }) => {
+  on(actions.activationDone, (state, { type, ...payload }) => {
     return { ...state, user: { ...payload } };
   }),
-  on(changeIsSignIn, (state, { payload }) => {
+  on(actions.changeIsSignIn, (state, { payload }) => {
     return { ...state, isSignIn: payload };
   }),
-  on(changeIsActivated, (state,{ payload } ) => {
+  on(actions.changeIsActivated, (state,{ payload } ) => {
     return { ...state, isActivated: payload };
   }),
-  on(signInDone, (state, { type, ...payload }) => {
+  on(actions.signInDone, (state, { type, ...payload }) => {
     return { ...state, user: { ...payload } };
   }),
-  on(signOutDone, (state, action) => {
+  on(actions.signOutDone, () => {
     return { ...initialState };
   }),
 );

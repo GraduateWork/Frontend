@@ -19,7 +19,7 @@ import {
   changeIsActivated
 } from '@store/login/login.actions';
 import { AuthService } from 'app/pages/home/pages/profile/auth/auth.service';
-import { setError } from '@store/error/error.actions';
+import { setError } from '@store/error/actions';
 
 @Injectable()
 export class LoginEffects {

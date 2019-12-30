@@ -1,6 +1,6 @@
-import { LoginState } from './login/login.reducer';
-import { EventsState } from './events/events.reducer';
-import { ErrorState } from './error/error.reducer';
+import { LoginState } from './login/state';
+import { EventsState } from './events/state';
+import { ErrorState } from './error/state';
 
 export interface RootState {
   login: LoginState;
