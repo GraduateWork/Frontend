@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
 import { AuthGuard } from 'app/pages/profile/auth/auth.guard';
@@ -11,9 +9,7 @@ import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
-    IonicModule,
     SharedModule,
     AuthModule,
     RouterModule.forChild([
