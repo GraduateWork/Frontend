@@ -5,3 +5,5 @@ Frontend part of graduate work
 Split login -> signIn, signUp and refactor login logic
 
 # 2. Create inner router navigation ?!
+
+# 3. Add 404 page

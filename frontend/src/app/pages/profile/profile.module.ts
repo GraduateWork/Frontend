@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
-import { AuthGuard } from 'app/pages/home/pages/profile/auth/auth.guard';
+import { AuthGuard } from 'app/pages/profile/auth/auth.guard';
 import { SharedModule } from '@shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 

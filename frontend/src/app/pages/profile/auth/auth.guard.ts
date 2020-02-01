@@ -35,11 +35,11 @@ export class AuthGuard implements CanActivate {
         }
 
         if (!user) {
-          this.router.navigate(['/home/profile/sign-in']);
+          this.router.navigate(['/profile/sign-in']);
         } else if (!isActivated) {
-          this.router.navigate(['/home/profile/activation']);
+          this.router.navigate(['/profile/activation']);
         } else if (isSignInNeededSelector(rootState)) {
-          this.router.navigate(['/home/profile/sign-in']);
+          this.router.navigate(['/profile/sign-in']);
         }
 
         return false;
