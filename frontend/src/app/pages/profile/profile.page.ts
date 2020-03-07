@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { userSelector } from '@store/login/login.selectors';
+import { LoginFacade } from '@store/login/facade';
 import { User } from '@models/user.model';
-import { RootState } from '@store/root.state';
-import { signOutStarted } from '@store/login/login.actions';
 
 @Component({
   selector: 'app-profile',
@@ -15,14 +12,14 @@ import { signOutStarted } from '@store/login/login.actions';
 export class ProfilePage implements OnInit {
   user$: Observable<User>;
 
-  constructor(private store$: Store<RootState>) {
-    this.user$ = this.store$.pipe(select(userSelector));
+  constructor(private loginFacade: LoginFacade) {
+    this.user$ = this.loginFacade.user$;
   }
 
   ngOnInit() {
   }
 
   onSignOut() {
-    this.store$.dispatch(signOutStarted());
+    this.loginFacade.signOut();
   }
 }

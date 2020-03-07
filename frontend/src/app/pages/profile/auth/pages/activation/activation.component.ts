@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
-import { RootState } from '@store/root.state';
-import { activationStarted } from '@store/login/login.actions';
+import { LoginFacade } from '@store/login/facade';
 
 @Component({
   selector: 'app-activation',
@@ -13,13 +11,13 @@ import { activationStarted } from '@store/login/login.actions';
 export class ActivationComponent implements OnInit {
   code = new FormControl('', Validators.required);
 
-  constructor(private store$: Store<RootState>) { }
+  constructor(private loginFacade: LoginFacade) { }
 
   ngOnInit() {}
 
   onSubmit() {
-    const code = this.code.value;
-    this.store$.dispatch(activationStarted({ payload: code }));
+    const code: string = this.code.value;
+    this.loginFacade.activation(code);
   }
 
 }

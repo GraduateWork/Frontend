@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
 
-import { RootState } from '@store/root.state';
-import { signInStarted } from '@store/login/login.actions';
+import { LoginFacade } from '@store/login/facade';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,14 +17,14 @@ export class SignInComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private store$: Store<RootState>) { }
+  constructor(private loginFacade: LoginFacade) { }
 
   ngOnInit() {}
 
   onSubmit() {
     const username = this.signInForm.get('username').value;
     const password = this.signInForm.get('password').value;
-    this.store$.dispatch(signInStarted({ username, password }));
+    this.loginFacade.signIn({ username, password });
   }
 
   togglePassword() {
