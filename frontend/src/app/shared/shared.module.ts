@@ -15,6 +15,8 @@ import { HeaderComponent } from './components/header/header.component';
     RouterModule,
   ],
   exports: [
+    IonicModule,
+    CommonModule,
     HeaderComponent,
   ]
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { 
+import {
   HttpInterceptor,
   HttpRequest,
   HttpHandler,
@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError(err => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            this.router.navigate(['/home/profile/sign-in']);
+            this.router.navigate(['profile/sign-in']);
           }
         }
 

@@ -1,16 +1,16 @@
 <app-header></app-header>
 <ion-content>
-  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <ion-grid>
       <ion-row class="ion-justify-content-center">
-        <ion-col size="3">
-          <ion-img src="assets/icons/signUp.svg"></ion-img>
+        <ion-col size="4">
+          <ion-img src="assets/icons/signIn.svg"></ion-img>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-col size="8" class="ion-text-center">
           <ion-text class="bold smallerFont">
-            Зарегистрируйтесь, чтобы продолжить работу.
+            Войдите в личный кабинет, чтобы продолжить работу.
           </ion-text>
         </ion-col>
       </ion-row>
@@ -21,10 +21,17 @@
             size="small" 
             fill="clear" 
             color="secondary"
-            [routerLink]="['/home/profile/sign-in']"
+            [routerLink]="['/profile/sign-up']"
           >
-            Уже есть аккаунт
+            Зарегистрироваться
           </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-margin-bottom">
+        <ion-col size="6" class="ion-text-center">
+          <ion-text>
+            Мы соскучились, пока тебя не было!
+          </ion-text>
         </ion-col>
       </ion-row>
       <ion-row class="ion-justify-content-center">
@@ -35,14 +42,6 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-justify-content-center">
-          <ion-col size="10">
-            <ion-label position="stacked" class="ion-padding-start">Email</ion-label>
-            <ion-item lines="none" class="rounded">
-              <ion-input type="text" formControlName="email"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
       <ion-row class="ion-justify-content-center">
         <ion-col size="10">
           <ion-label position="stacked" class="ion-padding-start">Пароль</ion-label>
@@ -60,9 +59,9 @@
             fill="clear"
             color="secondary"
             type="submit"
-            [disabled]="signUpForm.invalid"
+            [disabled]="signInForm.invalid"
           >
-            Регистрация
+            Войти в кабинет
           </ion-button>
         </ion-col>
       </ion-row>

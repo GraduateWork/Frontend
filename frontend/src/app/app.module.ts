@@ -11,7 +11,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RootModule as RootStoreModule } from '@store/root.module';
-import { AuthInterceptor } from 'app/pages/home/pages/profile/auth/auth.interceptor';
+import { AuthInterceptor } from 'app/pages/profile/auth/auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 @NgModule({

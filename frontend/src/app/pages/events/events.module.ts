@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 
 import { MainPageRoutingModule } from './events-routing.module';
 import { EventsPage } from './events.page';
@@ -10,9 +8,7 @@ import { EventsListComponent } from './components/events-list/events-list.compon
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
-    IonicModule,
     MainPageRoutingModule,
     SharedModule,
   ],

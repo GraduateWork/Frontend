@@ -4,17 +4,13 @@ import {
   Router,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  CanActivateChild,
-  NavigationExtras,
-  CanLoad,
-  Route
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
 import { RootState } from '@store/root.state';
-import { isActivatedSelector, isSignInNeededSelector } from '@store/login/login.selectors';
+import { isSignInNeededSelector } from '@store/login/login.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -35,11 +31,11 @@ export class AuthGuard implements CanActivate {
         }
 
         if (!user) {
-          this.router.navigate(['/home/profile/sign-in']);
+          this.router.navigate(['/profile/sign-in']);
         } else if (!isActivated) {
-          this.router.navigate(['/home/profile/activation']);
+          this.router.navigate(['/profile/activation']);
         } else if (isSignInNeededSelector(rootState)) {
-          this.router.navigate(['/home/profile/sign-in']);
+          this.router.navigate(['/profile/sign-in']);
         }
 
         return false;

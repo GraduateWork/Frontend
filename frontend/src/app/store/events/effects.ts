@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
 import { getEventsStarted, getEventsDone } from './actions';
-import { EventsService } from 'app/pages/home/pages/events/events.service';
+import { EventsService } from 'app/pages/events/events.service';
 import { setError } from '@store/error/actions';
 
 @Injectable()
