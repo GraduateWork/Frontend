@@ -21,7 +21,7 @@ export class AppComponent {
   error$: Observable<Error>;
 
   constructor(
-    private store$: Store<RootState>, 
+    private store$: Store<RootState>,
     private toastController: ToastController,
     private platform: Platform,
     private splashScreen: SplashScreen,

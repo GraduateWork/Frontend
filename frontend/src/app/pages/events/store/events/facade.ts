@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Event } from '@models/event.model';
+import { Event } from '../../models/event.model';
 import { RootState } from '@store/root.state';
 import { getEventsStarted } from './actions';
-import { eventsSelector } from '@store/events/selectors';
+import { eventsSelector } from './selectors';
 
 @Injectable({
   providedIn: 'root',

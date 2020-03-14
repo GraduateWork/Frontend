@@ -1,4 +1,4 @@
-import { Event } from '@models/event.model';
+import { Event } from '../../models/event.model';
 
 export interface EventsState {
   events: Event[];

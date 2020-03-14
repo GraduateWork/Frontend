@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Event } from '@models/event.model';
-import { EventsFacade } from '@store/events/facade';
+import { Event } from './models/event.model';
+import { EventsFacade } from './store/events/facade';
 
 @Component({
   selector: 'app-events',
