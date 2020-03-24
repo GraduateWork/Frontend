@@ -1,0 +1,30 @@
+<ion-grid>
+  <ion-row 
+    *ngFor="let event of events" 
+    class="event event-border"
+    [routerLink]="['details', event.title]"
+  >
+    <ion-col size="3" class="ion-no-padding">
+      <ion-img [src]="event.imgSrc"></ion-img>
+    </ion-col>
+    <ion-col size="9" class="ion-no-padding">
+      <ion-grid style="height: 100%; width: 100;">
+        <ion-row  style="height: 100%; width: 100;">
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text class="bold">
+              {{ event.title }}
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-text class="mediumFont">
+              {{ getFormatDate(event) }}
+            </ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-align-self-end ion-no-padding">
+            <ion-badge color="secondary">{{ event.type }}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+</ion-grid>

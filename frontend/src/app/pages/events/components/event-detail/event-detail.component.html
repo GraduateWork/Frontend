@@ -1,0 +1,9 @@
+<p>
+  event-detail works!
+</p>
+<p>
+  {{ (event$ | async) }}
+</p>
+<p *ngIf="(event$ | async) as event">
+  {{ event.title }}
+</p>

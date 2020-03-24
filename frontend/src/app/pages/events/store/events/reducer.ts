@@ -2,10 +2,15 @@ import { createReducer, on, Action } from '@ngrx/store';
 
 import { getEventsDone } from './actions';
 import { EventsState, initialState } from './state';
+import { BaseEvent } from '../../models/event.model';
+
+function getEventsHandler(state: EventsState, payload: BaseEvent[]) {
+  return { ...state, events: [ ...payload ] };
+}
 
 const _eventsReducer = createReducer(initialState,
   on(getEventsDone, (state, { payload }) => {
-    return { ...state, events: [ ...payload ] };
+    return getEventsHandler(state, payload);
   }),
 );
 

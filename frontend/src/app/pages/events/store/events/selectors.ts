@@ -9,3 +9,10 @@ export const eventsSelector = createSelector(
   selectFeature,
   (state: FeatureEventsState) => state.events.events,
 );
+
+export const eventSelector = createSelector(
+  selectFeature,
+  (state: FeatureEventsState, title) => {
+    return state.events.events.find(event => event.title === title);
+  },
+);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Event } from './models/event.model';
+import { BaseEvent } from './models/event.model';
 import { EventsFacade } from './store/events/facade';
 
 @Component({
@@ -10,9 +10,9 @@ import { EventsFacade } from './store/events/facade';
   styleUrls: ['./events.page.scss'],
 })
 export class EventsPage implements OnInit {
-  events$: Observable<Event[]>;
+  readonly events$: Observable<BaseEvent[]>;
 
-  constructor(private eventsFacade: EventsFacade) {
+  constructor(private readonly eventsFacade: EventsFacade) {
     this.events$ = eventsFacade.events$;
   }
 

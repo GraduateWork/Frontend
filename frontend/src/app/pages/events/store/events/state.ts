@@ -1,7 +1,7 @@
-import { Event } from '../../models/event.model';
+import { BaseEvent } from '../../models/event.model';
 
 export interface EventsState {
-  events: Event[];
+  events: BaseEvent[];
 }
 
 export const initialState: EventsState = {
