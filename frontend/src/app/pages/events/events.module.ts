@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { MainPageRoutingModule } from './events-routing.module';
-import { EventsPage } from './events.page';
 import { SharedModule } from '@shared/shared.module';
-import { EventsListComponent } from './components/events-list/events-list.component';
 import { StoreModule } from './store/store.module';
+
+import { EventsPage } from './events.page';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { StoreModule } from './store/store.module';
   ],
   declarations: [
     EventsPage,
-    EventsListComponent,
+    EventListComponent,
+    EventDetailComponent,
   ]
 })
 export class EventsPageModule {}

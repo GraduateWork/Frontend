@@ -24,7 +24,7 @@ export class EventsEffects {
   ));
 
   constructor(
-    private actions$: Actions,
-    private eventsService: EventsService,
+    private readonly actions$: Actions,
+    private readonly eventsService: EventsService,
   ) {}
 }

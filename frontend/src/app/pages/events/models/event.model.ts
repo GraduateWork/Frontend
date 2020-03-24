@@ -1,7 +1,11 @@
-export interface Event {
-  name: string;
-  startTime: number;
-  endTime: number | null;
-  pictureUrl: string;
-  tags: string[];
+export interface BaseEvent {
+  type: string;
+  title: string;
+  startTime: string;
+  endTime: string;
+  imgSrc: string;
+  description: string;
+  details: {
+    [key: string]: string;
+  };
 }
