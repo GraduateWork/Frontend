@@ -3,15 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { EventsPage } from './events.page';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
+import { EventListComponent } from './components/event-list/event-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component: EventsPage,
-  },
-  {
-    path: 'details/:title',
-    component: EventDetailComponent,
+    children: [
+      {
+        path: '',
+        component: EventListComponent,
+      },
+      {
+        path: ':title',
+        component: EventDetailComponent,
+      },
+    ]
   },
 ];
 

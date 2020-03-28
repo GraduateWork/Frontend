@@ -1,15 +1,15 @@
 <ion-grid>
   <ion-row 
-    *ngFor="let event of events" 
+    *ngFor="let event of events$ | async" 
     class="event event-border"
-    [routerLink]="['details', event.title]"
+    [routerLink]="event.title"
   >
     <ion-col size="3" class="ion-no-padding">
       <ion-img [src]="event.imgSrc"></ion-img>
     </ion-col>
     <ion-col size="9" class="ion-no-padding">
-      <ion-grid style="height: 100%; width: 100;">
-        <ion-row  style="height: 100%; width: 100;">
+      <ion-grid class="event-right-panel">
+        <ion-row class="event-right-panel">
           <ion-col size="12" class="ion-no-padding">
             <ion-text class="bold">
               {{ event.title }}
