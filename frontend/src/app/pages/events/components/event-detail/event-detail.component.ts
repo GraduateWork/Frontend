@@ -22,4 +22,14 @@ export class EventDetailComponent implements OnInit {
     const title: string = this.route.snapshot.params.title;
     this.event$ = this.eventsFacade.getEvent(title);
   }
+
+  getTime(event: BaseEvent) {
+    if (event.startTime && event.endTime) {
+      return event.startTime + ' - ' + event.endTime;
+    } else if (event.startTime) {
+      return event.startTime;
+    } else {
+      return event.endTime;
+    }
+  }
 }
