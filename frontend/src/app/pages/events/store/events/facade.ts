@@ -20,7 +20,7 @@ import { eventsSelector, eventSelector } from './selectors';
     this.store$.dispatch(getEventsStarted());
   }
 
-  getEvent(title: string) {
-    return this.store$.pipe(select(eventSelector, title));
+  getEvent(eventId: number) {
+    return this.store$.pipe(select(eventSelector, eventId));
   }
 }

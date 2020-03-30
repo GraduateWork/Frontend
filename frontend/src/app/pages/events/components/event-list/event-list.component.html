@@ -2,7 +2,7 @@
   <ion-row 
     *ngFor="let event of events$ | async" 
     class="event event-border"
-    [routerLink]="event.title"
+    [routerLink]="event.eventId"
   >
     <ion-col size="3" class="ion-no-padding">
       <ion-img [src]="event.imgSrc"></ion-img>
