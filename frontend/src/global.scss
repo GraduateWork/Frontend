@@ -46,13 +46,13 @@
 }
   
 * {
-  font-family: 'Cera Pro Regular';
+  font-family: 'Cera Pro Regular' !important;
 }
 
 // CUSTOM CLASSES
 
 .bold {
-  font-family: 'Cera Pro Bold';
+  font-family: 'Cera Pro Bold' !important;
 }
 
 .mediumFont {
@@ -72,4 +72,20 @@ ion-item.rounded {
 .linkWithLine {
   border-bottom: 1px solid var(--ion-color-secondary);
   font-size: 0.65rem;
+}
+
+.max-height-width {
+  height: 100%;
+  width: 100%;
+}
+
+// IONIC OVERRIDES
+
+ion-badge {
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+  --padding-bottom: 0.5rem;
+  --padding-end: 0.5rem;
+  --padding-start: 0.5rem;
+  --padding-top: 0.5rem;
 }
