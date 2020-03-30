@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { BaseEvent } from '../../models/event.model';
+import { BaseEvent } from '../models/event.model';
 import { RootState } from '@store/root.state';
-import { getEventsStarted } from './actions';
+import { getEventsStarted, updateFavorite } from './actions';
 import { eventsSelector, eventSelector } from './selectors';
 
 @Injectable({
@@ -22,5 +22,9 @@ import { eventsSelector, eventSelector } from './selectors';
 
   getEvent(eventId: number) {
     return this.store$.pipe(select(eventSelector, eventId));
+  }
+
+  updateFavorite(eventId: number) {
+    this.store$.dispatch(updateFavorite({ payload: eventId }));
   }
 }

@@ -1,4 +1,6 @@
-import { BaseEvent } from '../../models/event.model';
+import { BaseEvent } from '../models/event.model';
+
+export const featureKey = 'events';
 
 export interface EventsState {
   events: BaseEvent[];

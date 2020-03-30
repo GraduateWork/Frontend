@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/calendar/calendar.module').then(m => m.CalendarPageModule)
   },
   {
+    path: 'favorites',
+    loadChildren: () => import('./pages/favorites/favorites.module').then(m => m.FavoritesModule)
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
   },

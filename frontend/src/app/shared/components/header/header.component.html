@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="primary">
-      <ion-button>
+      <ion-button routerLink="/favorites" *ngIf="isSignIn$ | async">
         <ion-icon slot="icon-only" name="bookmark-outline"></ion-icon>
       </ion-button>
-      <ion-button [routerLink]="['/profile']">
+      <ion-button routerLink="/profile">
         <ion-icon slot="icon-only" name="person-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
