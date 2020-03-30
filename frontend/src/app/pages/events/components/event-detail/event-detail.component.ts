@@ -19,7 +19,7 @@ export class EventDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const title: string = this.route.snapshot.params.title;
+    const title: number = +this.route.snapshot.params.title;
     this.event$ = this.eventsFacade.getEvent(title);
   }
 

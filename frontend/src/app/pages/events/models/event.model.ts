@@ -1,4 +1,5 @@
 export interface BaseEvent {
+  eventId: number;
   type: string;
   title: string;
   startTime: string;
@@ -8,4 +9,5 @@ export interface BaseEvent {
   details: {
     [key: string]: string;
   };
+  favorite: string;
 }

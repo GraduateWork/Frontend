@@ -12,7 +12,7 @@ export const eventsSelector = createSelector(
 
 export const eventSelector = createSelector(
   selectFeature,
-  (state: FeatureEventsState, title) => {
-    return state.events.events.find(event => event.title === title);
+  (state: FeatureEventsState, eventId: number) => {
+    return state.events.events.find(event => event.eventId === eventId);
   },
 );
