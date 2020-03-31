@@ -1,0 +1,9 @@
+.divider {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+// overflow is needed to override shadow dom
+.rounded {
+  border-radius: 0.4rem;
+  overflow: hidden;
+}

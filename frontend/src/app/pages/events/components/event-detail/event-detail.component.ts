@@ -15,6 +15,7 @@ import { BaseEvent } from '../../models/event.model';
 export class EventDetailComponent implements OnInit {
   event$: Observable<BaseEvent>;
   readonly isSignIn$: Observable<boolean>;
+  readonly objectKeys = Object.keys;
 
   constructor(
     private readonly eventsFacade: EventsFacade,
@@ -37,5 +38,9 @@ export class EventDetailComponent implements OnInit {
     } else {
       return event.endTime;
     }
+  }
+
+  onFavoriteClick(eventId: number) {
+    this.eventsFacade.updateFavorite(eventId);
   }
 }

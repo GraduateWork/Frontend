@@ -6,14 +6,17 @@
     *ngFor="let event of $.events" 
     class="event event-border"
   >
-    <ion-col size="3" class="ion-no-padding">
+    <ion-col 
+      [routerLink]="event.eventId"
+      size="3" 
+      class="ion-no-padding" 
+    >
       <ion-img [src]="event.imgSrc"></ion-img>
     </ion-col>
     <ion-col size="9" class="ion-no-padding">
       <ion-grid class="max-height-width">
         <ion-row class="max-height-width">
           <ion-col 
-            [routerLink]="event.eventId"
             size="12" 
             class="ion-no-padding" 
           >

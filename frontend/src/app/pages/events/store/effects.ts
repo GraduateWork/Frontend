@@ -27,10 +27,11 @@ export class EventsEffects {
   updateFavorite$ = createEffect(() => this.actions$.pipe(
     ofType(updateFavorite),
     tap(action => {
-      this.favoritesService.updateFavorite(action.payload).subscribe(answer => {
-        console.log('ANSWER FROM SERVER');
-        console.log(answer);
-      });
+      this.favoritesService.updateFavorite(action.payload).pipe(
+        catchError(error => {
+          return of(setError({ message: error, time: new Date().getDate() }));
+        })
+      );
     }),
   ), { dispatch: false });
 

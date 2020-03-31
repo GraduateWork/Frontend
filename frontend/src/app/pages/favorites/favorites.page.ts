@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { FavoritesFacade } from './store/facade';
@@ -9,14 +9,16 @@ import { BaseEvent } from '../events/models/event.model';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage {
   readonly favorites$: Observable<BaseEvent[]>;
 
   constructor(private favoritesFacade: FavoritesFacade) {
     this.favorites$ = favoritesFacade.favorites$;
   }
 
-  ngOnInit() {
+  // ionic life cycle hook instead of ngOnInit
+  // (this component aren't destroyed after leaving it)
+  ionViewWillEnter() {
     this.favoritesFacade.getFavorites();
   }
 }

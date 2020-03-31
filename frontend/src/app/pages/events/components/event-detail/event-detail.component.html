@@ -9,8 +9,9 @@
         <ion-col size="2" class="ion-text-right arrow-icon">
           <ion-icon
             *ngIf="isSignIn$ | async"
-            name="bookmark-outline" 
+            [name]="event.favorite ? 'bookmark' : 'bookmark-outline'"
             class="bookmark-icon"
+            (click)="onFavoriteClick(event.eventId)"
           ></ion-icon>
         </ion-col>
         <ion-col size="12">
@@ -33,7 +34,8 @@
   </ion-card-header>
   <ion-card-content class="smallFont">
     {{ event.description }}
-    <app-expansion-panel 
+    <app-expansion-panel
+      *ngIf="objectKeys(event.details).length > 0"
       title="Дополнительно"
       [event]="event"
     ></app-expansion-panel>
