@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { EventsFacade } from '../../store/events/facade';
+import { LoginFacade } from '@store/login/facade';
+
+import { EventsFacade } from '../../store/facade';
 import { BaseEvent } from '../../models/event.model';
 
 @Component({
@@ -12,11 +14,16 @@ import { BaseEvent } from '../../models/event.model';
 })
 export class EventDetailComponent implements OnInit {
   event$: Observable<BaseEvent>;
+  readonly isSignIn$: Observable<boolean>;
+  readonly objectKeys = Object.keys;
 
   constructor(
     private readonly eventsFacade: EventsFacade,
+    private readonly loginFacade: LoginFacade,
     private readonly route: ActivatedRoute
-  ) { }
+  ) {
+    this.isSignIn$ = this.loginFacade.isSignIn$;
+  }
 
   ngOnInit() {
     const title: number = +this.route.snapshot.params.title;
@@ -31,5 +38,9 @@ export class EventDetailComponent implements OnInit {
     } else {
       return event.endTime;
     }
+  }
+
+  onFavoriteClick(eventId: number) {
+    this.eventsFacade.updateFavorite(eventId);
   }
 }

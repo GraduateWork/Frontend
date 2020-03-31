@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { LoginFacade } from '@store/login/facade';
+
 import { BaseEvent } from '../../models/event.model';
-import { EventsFacade } from '../../store/events/facade';
+import { EventsFacade } from '../../store/facade';
 
 @Component({
   selector: 'app-events-list',
@@ -11,9 +13,14 @@ import { EventsFacade } from '../../store/events/facade';
 })
 export class EventListComponent implements OnInit {
   readonly events$: Observable<BaseEvent[]>;
+  readonly isSignIn$: Observable<boolean>;
 
-  constructor(private readonly eventsFacade: EventsFacade) {
-    this.events$ = eventsFacade.events$;
+  constructor(
+    private readonly eventsFacade: EventsFacade,
+    private readonly loginFacade: LoginFacade,
+  ) {
+    this.events$ = this.eventsFacade.events$;
+    this.isSignIn$ = this.loginFacade.isSignIn$;
   }
 
   ngOnInit() {
@@ -29,5 +36,9 @@ export class EventListComponent implements OnInit {
     } else {
       return endTime;
     }
+  }
+
+  onFavoriteClick(eventId: number) {
+    this.eventsFacade.updateFavorite(eventId);
   }
 }

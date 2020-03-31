@@ -49,6 +49,12 @@
   font-family: 'Cera Pro Regular' !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cera Pro Bold' !important;
+  margin: 0;
+  padding: 0;
+}
+
 // CUSTOM CLASSES
 
 .bold {
@@ -79,6 +85,10 @@ ion-item.rounded {
   width: 100%;
 }
 
+.bookmark-icon {
+  color: var(--ion-color-primary-bookmark-icon);
+}
+
 // IONIC OVERRIDES
 
 ion-badge {
@@ -88,4 +98,9 @@ ion-badge {
   --padding-end: 0.5rem;
   --padding-start: 0.5rem;
   --padding-top: 0.5rem;
+}
+
+ion-icon {
+  // small = 16px, large = 32px
+  font-size: 24px;
 }

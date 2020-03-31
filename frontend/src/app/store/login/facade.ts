@@ -2,20 +2,23 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { RootState } from '@store/root.state';
-import { userSelector } from './login.selectors';
-import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './login.actions';
 import { SignUpData } from '@models/sign-up.model';
 import { User } from '@models/user.model';
 import { SignInData } from '@models/sign-in.model';
+import { RootState } from '@store/root.state';
+
+import { userSelector, isSignInSelector } from './login.selectors';
+import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './login.actions';
 
 @Injectable({
   providedIn: 'root',
 }) export class LoginFacade {
-  user$: Observable<User>;
+  readonly user$: Observable<User>;
+  readonly isSignIn$: Observable<boolean>;
 
   constructor(private store$: Store<RootState>) {
     this.user$ = this.store$.pipe(select(userSelector));
+    this.isSignIn$ = this.store$.pipe(select(isSignInSelector));
   }
 
   public signUp(data: SignUpData) {
@@ -31,6 +34,6 @@ import { SignInData } from '@models/sign-in.model';
   }
 
   public signIn(data: SignInData) {
-    this.store$.dispatch(signInStarted(signInStarted(data)));
+    this.store$.dispatch(signInStarted(data));
   }
 }

@@ -9,5 +9,5 @@ export interface BaseEvent {
   details: {
     [key: string]: string;
   };
-  favorite: string;
+  favorite: boolean;
 }

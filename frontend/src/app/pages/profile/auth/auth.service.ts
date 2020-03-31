@@ -8,7 +8,6 @@ import { SignInData } from '@models/sign-in.model';
   providedIn: 'root'
 })
 export class AuthService {
-  //private serverUrl = 'http://192.168.0.12:8080';
   private serverUrl = 'https://placard-backend.herokuapp.com';
 
   constructor(private http: HttpClient) { }

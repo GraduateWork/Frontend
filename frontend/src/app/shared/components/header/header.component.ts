@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { LoginFacade } from '@store/login/facade';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  readonly isSignIn$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private loginFacade: LoginFacade) {
+    this.isSignIn$ = loginFacade.isSignIn$;
+  }
 
   ngOnInit() {}
 

@@ -3,28 +3,28 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
-import { getEventsStarted, getEventsDone } from './actions';
-import { EventsService } from 'app/pages/events/events.service';
+import { getFavoritesStarted, getFavoritesDone } from './actions';
 import { setError } from '@store/error/actions';
+import { FavoritesService } from '../favories.service';
 
 @Injectable()
-export class EventsEffects {
-  getEventsEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(getEventsStarted),
+export class FavoritesEventsEffects {
+  getFavoritesEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(getFavoritesStarted),
     switchMap(action => {
-      return this.eventsService.getEvents().pipe(
+      return this.favoritesService.getFavorites().pipe(
         map(events => {
-          return getEventsDone({ payload: events });
+          return getFavoritesDone({ payload: events });
         }),
         catchError(error => {
           return of(setError({ message: error, time: new Date().getDate() }));
-        })
+        }),
       );
     })
   ));
 
   constructor(
     private readonly actions$: Actions,
-    private readonly eventsService: EventsService,
+    private readonly favoritesService: FavoritesService,
   ) {}
 }
