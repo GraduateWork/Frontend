@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
+import { of, EMPTY } from 'rxjs';
 import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import { getEventsStarted, getEventsDone, updateFavorite } from './actions';
@@ -26,14 +26,17 @@ export class EventsEffects {
 
   updateFavorite$ = createEffect(() => this.actions$.pipe(
     ofType(updateFavorite),
-    tap(action => {
-      this.favoritesService.updateFavorite(action.payload).pipe(
+    switchMap(action => {
+      return this.favoritesService.updateFavorite(action.payload).pipe(
+        switchMap(response => {
+          return EMPTY;
+        }),
         catchError(error => {
           return of(setError({ message: error, time: new Date().getDate() }));
         })
       );
     }),
-  ), { dispatch: false });
+  ));
 
   constructor(
     private readonly actions$: Actions,
