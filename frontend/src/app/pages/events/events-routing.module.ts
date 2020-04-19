@@ -15,7 +15,7 @@ const routes: Routes = [
         component: EventListComponent,
       },
       {
-        path: ':title',
+        path: ':eventId',
         component: EventDetailComponent,
       },
     ]

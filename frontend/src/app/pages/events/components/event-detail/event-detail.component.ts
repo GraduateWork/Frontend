@@ -26,8 +26,8 @@ export class EventDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    const title: number = +this.route.snapshot.params.title;
-    this.event$ = this.eventsFacade.getEvent(title);
+    const eventId: number = +this.route.snapshot.params.eventId;
+    this.event$ = this.eventsFacade.getEvent(eventId);
   }
 
   getTime(event: BaseEvent) {
