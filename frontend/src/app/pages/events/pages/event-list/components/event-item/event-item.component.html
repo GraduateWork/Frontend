@@ -1,0 +1,42 @@
+<ion-row class="event event-border">
+  <ion-col 
+    class="ion-no-padding" 
+    size="3"
+    [routerLink]="event.eventId"
+  >
+    <ion-img [src]="event.imgSrc"></ion-img>
+  </ion-col>
+  <ion-col class="ion-no-padding" size="9">
+    <ion-grid class="max-height-width">
+      <ion-row class="max-height-width">
+        <ion-col 
+          class="ion-no-padding" 
+          size="12" 
+        >
+          <ion-text class="bold">
+            {{ event.title }}
+          </ion-text>
+        </ion-col>
+        <ion-col class="ion-no-padding" size="12">
+          <ion-text class="mediumFont">
+            {{ event | formatEventDate }}
+          </ion-text>
+        </ion-col>
+        <ion-col class="ion-align-self-end ion-no-padding" size="10">
+          <ion-badge color="secondary">{{ event.type }}</ion-badge>
+        </ion-col>
+        <ng-container *ngIf="isSignIn">
+          <ion-col
+            class="ion-align-self-end ion-text-right bookmark-icon ion-no-padding"
+            size="2"
+          >
+            <app-favorite-event 
+              [event]="event"
+              (favoriteClick)="onFavoriteClick($event)"
+            ></app-favorite-event>
+          </ion-col>
+        </ng-container>
+      </ion-row>
+    </ion-grid>
+  </ion-col>
+</ion-row>
