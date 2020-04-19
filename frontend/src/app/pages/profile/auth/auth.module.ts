@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 
 import { AuthRoutingModule } from './auth-rouitng.module';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -11,9 +8,6 @@ import { ActivationComponent } from './pages/activation/activation.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    IonicModule,
     AuthRoutingModule,
     SharedModule,
   ],

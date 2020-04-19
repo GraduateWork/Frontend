@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { EventsRoutingModule } from './events-routing.module';
 import { SharedModule } from '@shared/shared.module';
@@ -12,7 +11,6 @@ import { ExpansionPanelComponent } from './components/expansion-panel/expansion-
 
 @NgModule({
   imports: [
-    FormsModule,
     EventsRoutingModule,
     StoreModule,
     SharedModule,
