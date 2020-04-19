@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { LoginFacade } from '@store/login/facade';
@@ -10,6 +10,7 @@ import { EventsFacade } from '../../store/facade';
   selector: 'app-events-list',
   templateUrl: './event-list.component.html',
   styleUrls: ['./event-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventListComponent implements OnInit {
   readonly events$: Observable<BaseEvent[]>;
