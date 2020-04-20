@@ -17,4 +17,4 @@ import { ActivationComponent } from './pages/activation/activation.component';
     SignInComponent,
   ]
 })
-export class AuthModule {}
+export class AuthModule { }

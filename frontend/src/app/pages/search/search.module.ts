@@ -11,4 +11,4 @@ import { SharedModule } from 'app/shared/shared.module';
   ],
   declarations: [SearchPage]
 })
-export class SearchPageModule {}
+export class SearchPageModule { }

@@ -1,25 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { EventsRoutingModule } from './events-routing.module';
-import { SharedModule } from '@shared/shared.module';
-import { StoreModule } from './store/store.module';
-
+import { EventsSharedModule } from './events-shared.module';
 import { EventsPage } from './events.page';
-import { EventListComponent } from './components/event-list/event-list.component';
-import { EventDetailComponent } from './components/event-detail/event-detail.component';
-import { ExpansionPanelComponent } from './components/expansion-panel/expansion-panel.component';
 
 @NgModule({
   imports: [
     EventsRoutingModule,
-    StoreModule,
-    SharedModule,
+    EventsSharedModule,
   ],
   declarations: [
     EventsPage,
-    EventListComponent,
-    EventDetailComponent,
-    ExpansionPanelComponent,
   ]
 })
-export class EventsPageModule {}
+export class EventsPageModule { }

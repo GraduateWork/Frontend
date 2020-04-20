@@ -10,4 +10,4 @@ import { SharedModule } from 'app/shared/shared.module';
   ],
   declarations: [CalendarPage]
 })
-export class CalendarPageModule {}
+export class CalendarPageModule { }

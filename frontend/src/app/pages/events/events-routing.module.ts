@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { EventsPage } from './events.page';
-import { EventDetailComponent } from './components/event-detail/event-detail.component';
-import { EventListComponent } from './components/event-list/event-list.component';
 
 const routes: Routes = [
   {
@@ -12,11 +10,11 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: EventListComponent,
+        loadChildren: () => import('./pages/event-list/event-list.module').then(m => m.EventListPageModule),
       },
       {
         path: ':eventId',
-        component: EventDetailComponent,
+        loadChildren: () => import('./pages/event-detail/event-detail.module').then(m => m.EventDetailPageModule),
       },
     ]
   },
@@ -26,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class EventsRoutingModule {}
+export class EventsRoutingModule { }

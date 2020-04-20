@@ -1,0 +1,12 @@
+<ion-grid *ngIf="{
+  events: events$ | async,
+  isSignIn: isSignIn$ | async
+} as $">
+  <ng-container *ngFor="let event of $.events" >
+    <app-event-item 
+      [event]="event" 
+      [isSignIn]="$.isSignIn"
+      (favoriteClick)="onFavoriteClick($event)"
+    ></app-event-item>
+  </ng-container>
+</ion-grid>

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
 import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
@@ -20,8 +19,9 @@ import { HeaderComponent } from './components/header/header.component';
   exports: [
     CommonModule,
     RouterModule,
-    FormsModule,
     IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
     HeaderComponent,
   ]
 })

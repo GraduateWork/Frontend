@@ -8,16 +8,16 @@ import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
-    SharedModule,
-    AuthModule,
     RouterModule.forChild([
       {
         path: '',
         component: ProfilePage,
         canActivate: [AuthGuard],
       },
-    ])
+    ]),
+    SharedModule,
+    AuthModule,
   ],
   declarations: [ProfilePage]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

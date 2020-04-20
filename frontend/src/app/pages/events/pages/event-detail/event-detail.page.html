@@ -1,0 +1,46 @@
+<ng-container *ngIf="(event$ | async) as event">
+  <ion-card class="ion-no-margin">
+    <img [src]="event.imgSrc" class="card-image" />
+    <ion-card-header class="ion-no-padding">
+      <ion-grid class="no-padding">
+        <ion-row>
+          <ion-col size="10">
+            <ion-card-title class="bold">"{{ event.title }}"</ion-card-title>
+          </ion-col>
+          <ion-col size="2" class="ion-text-right arrow-icon">
+            <ng-container *ngIf="(isSignIn$ | async)">
+              <app-favorite-event 
+                [event]="event"
+                (favoriteClick)="onFavoriteClick($event)"
+            ></app-favorite-event>
+            </ng-container>
+          </ion-col>
+          <ion-col size="12">
+            <ion-badge color="secondary">{{ event.type }}</ion-badge>
+          </ion-col>
+          <ion-col size="12" class="ion-no-padding">
+            <ion-item lines="none">
+              <ion-text class="mediumFont">
+                {{ event | formatEventDate }}
+              </ion-text>
+              <ion-icon
+                name="chevron-forward-outline" 
+                slot="end" 
+                class="link"
+              ></ion-icon>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content class="smallFont">
+      {{ event.description }}
+      <ng-container *ngIf="objectKeys(event.details).length > 0">
+        <app-expansion-panel
+          title="Дополнительно"
+          [event]="event"
+        ></app-expansion-panel>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
