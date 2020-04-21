@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import * as mapper from 'assets/i18n/ru.json';
-import { BaseEvent } from '../../models/event.model';
+import { BaseEvent } from 'app/pages/events/models/event.model';
 
 @Component({
   selector: 'app-expansion-panel',

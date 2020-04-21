@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
@@ -11,13 +11,17 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     CommonModule,
-    IonicModule,
     RouterModule,
+    IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
-    IonicModule,
     RouterModule,
+    IonicModule,
+    FormsModule,
+    ReactiveFormsModule,
     HeaderComponent,
   ]
 })

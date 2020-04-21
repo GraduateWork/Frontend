@@ -9,11 +9,11 @@ import { BaseEvent } from '../../models/event.model';
 
 @Component({
   selector: 'app-event-detail',
-  templateUrl: './event-detail.component.html',
-  styleUrls: ['./event-detail.component.scss'],
+  templateUrl: './event-detail.page.html',
+  styleUrls: ['./event-detail.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventDetailComponent implements OnInit {
+export class EventDetailPage implements OnInit {
   event$: Observable<BaseEvent>;
   readonly isSignIn$: Observable<boolean>;
   readonly objectKeys = Object.keys;
@@ -29,16 +29,6 @@ export class EventDetailComponent implements OnInit {
   ngOnInit() {
     const eventId: number = +this.route.snapshot.params.eventId;
     this.event$ = this.eventsFacade.getEvent(eventId);
-  }
-
-  getTime(event: BaseEvent) {
-    if (event.startTime && event.endTime) {
-      return event.startTime + ' - ' + event.endTime;
-    } else if (event.startTime) {
-      return event.startTime;
-    } else {
-      return event.endTime;
-    }
   }
 
   onFavoriteClick(eventId: number) {

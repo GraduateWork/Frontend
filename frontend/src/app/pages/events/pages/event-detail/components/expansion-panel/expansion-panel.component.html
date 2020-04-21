@@ -1,0 +1,19 @@
+<ion-item  class="ion-no-padding" lines="none">
+  <ion-text class="mediumFont">
+    {{ title }}
+  </ion-text>
+  <ion-icon
+    [name]="isOpen ? 'chevron-up-outline' : 'chevron-down-outline'"
+    (click)="onOpen()"
+  ></ion-icon>
+</ion-item>
+<ng-container *ngIf="isOpen">
+  <ng-container *ngFor="let key of objectKeys(event.details)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">{{ mapper[key] }}</ion-col>
+        <ion-col size="6">{{ event.details[key] }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+</ng-container>

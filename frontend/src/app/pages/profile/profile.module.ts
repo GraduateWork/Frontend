@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { ProfilePage } from './profile.page';
@@ -9,17 +8,16 @@ import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
-    FormsModule,
-    SharedModule,
-    AuthModule,
     RouterModule.forChild([
       {
         path: '',
         component: ProfilePage,
         canActivate: [AuthGuard],
       },
-    ])
+    ]),
+    SharedModule,
+    AuthModule,
   ],
   declarations: [ProfilePage]
 })
-export class ProfilePageModule {}
+export class ProfilePageModule { }

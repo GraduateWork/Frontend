@@ -8,11 +8,11 @@ import { EventsFacade } from '../../store/facade';
 
 @Component({
   selector: 'app-events-list',
-  templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.scss'],
+  templateUrl: './event-list.page.html',
+  styleUrls: ['./event-list.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventListComponent implements OnInit {
+export class EventListPage implements OnInit {
   readonly events$: Observable<BaseEvent[]>;
   readonly isSignIn$: Observable<boolean>;
 
@@ -28,18 +28,11 @@ export class EventListComponent implements OnInit {
     this.eventsFacade.getEvents();
   }
 
-  getFormatDate(event: BaseEvent): string {
-    const { startTime, endTime } = event;
-    if (startTime && endTime) {
-      return startTime + ' - ' + endTime;
-    } else if (startTime) {
-      return startTime;
-    } else {
-      return endTime;
-    }
-  }
-
   onFavoriteClick(eventId: number) {
     this.eventsFacade.updateFavorite(eventId);
+  }
+
+  trackByEventId(index: number, event: BaseEvent) {
+    return event.eventId;
   }
 }

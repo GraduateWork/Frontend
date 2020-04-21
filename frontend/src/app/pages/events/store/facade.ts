@@ -16,15 +16,15 @@ import { eventsSelector, eventSelector } from './selectors';
     this.events$ = this.store$.pipe(select(eventsSelector));
   }
 
-  getEvents() {
+  getEvents(): void {
     this.store$.dispatch(getEventsStarted());
   }
 
-  getEvent(eventId: number) {
+  getEvent(eventId: number): Observable<BaseEvent> {
     return this.store$.pipe(select(eventSelector, eventId));
   }
 
-  updateFavorite(eventId: number) {
+  updateFavorite(eventId: number): void {
     this.store$.dispatch(updateFavorite({ payload: eventId }));
   }
 }
