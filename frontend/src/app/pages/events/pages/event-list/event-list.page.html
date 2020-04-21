@@ -2,7 +2,7 @@
   events: events$ | async,
   isSignIn: isSignIn$ | async
 } as $">
-  <ng-container *ngFor="let event of $.events" >
+  <ng-container *ngFor="let event of $.events; trackBy: trackByEventId" >
     <app-event-item 
       [event]="event" 
       [isSignIn]="$.isSignIn"

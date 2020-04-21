@@ -31,4 +31,8 @@ export class EventListPage implements OnInit {
   onFavoriteClick(eventId: number) {
     this.eventsFacade.updateFavorite(eventId);
   }
+
+  trackByEventId(index: number, event: BaseEvent) {
+    return event.eventId;
+  }
 }
