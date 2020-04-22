@@ -1,4 +1,3 @@
-<app-header></app-header>
 <ion-content>
   <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <ion-grid>
@@ -21,7 +20,7 @@
             size="small" 
             fill="clear" 
             color="secondary"
-            [routerLink]="['/profile/sign-up']"
+            [routerLink]="['/auth/sign-up']"
           >
             Зарегистрироваться
           </ion-button>

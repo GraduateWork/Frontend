@@ -18,7 +18,7 @@ import {
   activationDone,
   changeIsActivated
 } from '@store/login/login.actions';
-import { AuthService } from 'app/pages/profile/auth/auth.service';
+import { AuthService } from 'app/pages/auth/auth.service';
 import { setError } from '@store/error/actions';
 
 @Injectable()
@@ -100,14 +100,14 @@ export class LoginEffects {
   navigateAfterSignUpEffect$ = createEffect(() => this.actions$.pipe(
     ofType(signUpDone),
     tap(() => {
-      this.router.navigate(['/profile/activation']);
+      this.router.navigate(['/auth/activation']);
     })
   ), { dispatch: false });
 
   navigateAfterActivationEffect$ = createEffect(() => this.actions$.pipe(
     ofType(activationDone),
     tap(() => {
-      this.router.navigate(['/profile/sign-in']);
+      this.router.navigate(['/auth/sign-in']);
     })
   ), { dispatch: false });
 

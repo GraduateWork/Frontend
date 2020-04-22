@@ -5,10 +5,10 @@ import { LoginFacade } from '@store/login/facade';
 
 @Component({
   selector: 'app-activation',
-  templateUrl: './activation.component.html',
-  styleUrls: ['./activation.component.scss'],
+  templateUrl: './activation.page.html',
+  styleUrls: ['./activation.page.scss'],
 })
-export class ActivationComponent implements OnInit {
+export class ActivationPage implements OnInit {
   code = new FormControl('', Validators.required);
 
   constructor(private loginFacade: LoginFacade) { }
