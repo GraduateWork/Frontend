@@ -4,30 +4,27 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginFacade } from '@store/login/facade';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.page.html',
+  styleUrls: ['./sign-in.page.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class SignInPage implements OnInit {
   passwordType = 'password';
   isPasswordShown = false;
 
-  signUpForm = new FormGroup({
+  signInForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
 
   constructor(private loginFacade: LoginFacade) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
-    const username: string = this.signUpForm.get('username').value;
-    const email: string = this.signUpForm.get('email').value;
-    const password: string = this.signUpForm.get('password').value;
-    this.loginFacade.signUp({ username, email, password });
+    const username = this.signInForm.get('username').value;
+    const password = this.signInForm.get('password').value;
+    this.loginFacade.signIn({ username, password });
   }
 
   togglePassword() {

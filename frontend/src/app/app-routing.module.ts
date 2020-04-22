@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule),
+  },
+  {
     path: '',
     redirectTo: '/events',
     pathMatch: 'full'
