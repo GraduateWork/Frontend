@@ -6,13 +6,13 @@ import { FavoriteEventComponent } from './components/favorite-event/favorite-eve
 import { FormatEventDatePipe } from './pipes/format-event-date.pipe';
 
 @NgModule({
-  imports: [
-    SharedModule,
-    StoreModule,
-  ],
   declarations: [
     FavoriteEventComponent,
     FormatEventDatePipe,
+  ],
+  imports: [
+    SharedModule,
+    StoreModule,
   ],
   exports: [
     SharedModule,

@@ -1,0 +1,15 @@
+<ion-row class="ion-justify-content-end">
+  <ion-col size="auto">
+    <ion-button
+      class="bold"
+      color="secondary"
+      fill="clear"
+      size="large"
+      [disabled]="isDisabled"
+      [type]="type"
+      (click)="type === 'submit' ? null : onSubmit()"
+    >
+      {{ text }}
+    </ion-button>
+  </ion-col>
+</ion-row>

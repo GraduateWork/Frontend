@@ -1,38 +1,13 @@
 <ion-content>
   <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
     <ion-grid>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="4">
-          <ion-img src="assets/icons/signIn.svg"></ion-img>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="8" class="ion-text-center">
-          <ion-text class="bold mediumFont">
-            Войдите в личный кабинет, чтобы продолжить работу.
-          </ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center ion-margin-bottom">
-        <ion-col size="auto">
-          <ion-button 
-            class="linkWithLine" 
-            size="small" 
-            fill="clear" 
-            color="secondary"
-            [routerLink]="['/auth/sign-up']"
-          >
-            Зарегистрироваться
-          </ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center ion-margin-bottom">
-        <ion-col size="6" class="ion-text-center">
-          <ion-text>
-            Мы соскучились, пока тебя не было!
-          </ion-text>
-        </ion-col>
-      </ion-row>
+      <app-auth-logo logoSrc="assets/icons/signIn.svg"></app-auth-logo>
+      <app-auth-info text="Войдите в личный кабинет, чтобы продолжить работу."></app-auth-info>
+      <app-auth-link
+        link="/auth/sign-up"
+        linkText="Зарегистрироваться"
+        greetText="Мы соскучились, пока тебя не было!"
+      ></app-auth-link>
       <ion-row class="ion-justify-content-center">
         <ion-col size="10">
           <ion-label position="stacked" class="ion-padding-start">Имя пользователя</ion-label>
@@ -50,20 +25,10 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-justify-content-end">
-        <ion-col size="auto">
-          <ion-button
-            class="bold"
-            size="large"
-            fill="clear"
-            color="secondary"
-            type="submit"
-            [disabled]="signInForm.invalid"
-          >
-            Войти в кабинет
-          </ion-button>
-        </ion-col>
-      </ion-row>
+      <app-auth-button 
+        text="Войти в кабинет" 
+        [isDisabled]="signInForm.invalid"
+      ></app-auth-button>
     </ion-grid>
   </form>
 </ion-content>
