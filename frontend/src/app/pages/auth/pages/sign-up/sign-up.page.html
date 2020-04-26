@@ -1,31 +1,12 @@
 <ion-content>
   <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <ion-grid>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="3">
-          <ion-img src="assets/icons/signUp.svg"></ion-img>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="8" class="ion-text-center">
-          <ion-text class="bold mediumFont">
-            Зарегистрируйтесь, чтобы продолжить работу.
-          </ion-text>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-center ion-margin-bottom">
-        <ion-col size="auto">
-          <ion-button 
-            class="linkWithLine" 
-            size="small" 
-            fill="clear" 
-            color="secondary"
-            [routerLink]="['/auth/sign-in']"
-          >
-            Уже есть аккаунт
-          </ion-button>
-        </ion-col>
-      </ion-row>
+      <app-auth-logo logoSrc="assets/icons/signUp.svg"></app-auth-logo>
+      <app-auth-info text="Зарегистрируйтесь, чтобы продолжить работу."></app-auth-info>
+      <app-auth-link
+        link="/auth/sign-in"
+        linkText="Уже есть аккаунт"
+      ></app-auth-link>
       <ion-row class="ion-justify-content-center">
         <ion-col size="10">
           <ion-label position="stacked" class="ion-padding-start">Имя пользователя</ion-label>
@@ -51,20 +32,10 @@
           </ion-item>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-justify-content-end">
-        <ion-col size="auto">
-          <ion-button
-            class="bold"
-            size="large"
-            fill="clear"
-            color="secondary"
-            type="submit"
-            [disabled]="signUpForm.invalid"
-          >
-            Регистрация
-          </ion-button>
-        </ion-col>
-      </ion-row>
+      <app-auth-button 
+        text="Регистрация" 
+        [isDisabled]="signUpForm.invalid"
+      ></app-auth-button>
     </ion-grid>
   </form>
 </ion-content>

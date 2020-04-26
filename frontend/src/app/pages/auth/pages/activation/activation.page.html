@@ -1,16 +1,6 @@
 <ion-content>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="3">
-      <ion-img src="assets/icons/activation.svg"></ion-img>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-justify-content-center ion-margin-bottom">
-      <ion-col size="8" class="ion-text-center">
-        <ion-text class="bold mediumFont">
-          Введите код активации, чтобы продолжить работу.
-        </ion-text>
-      </ion-col>
-    </ion-row>
+  <app-auth-logo logoSrc="assets/icons/activation.svg"></app-auth-logo>
+  <app-auth-info text="Введите код активации, чтобы продолжить работу."></app-auth-info>
   <ion-row class="ion-justify-content-center">
     <ion-col size="10">
       <ion-label position="stacked" class="ion-padding-start">Код Активации</ion-label>
@@ -19,18 +9,10 @@
       </ion-item>
     </ion-col>
   </ion-row>
-  <ion-row class="ion-justify-content-end">
-    <ion-col size="auto">
-      <ion-button
-        class="bold"
-        size="large"
-        fill="clear"
-        color="secondary"
-        (click)="onSubmit()"
-        [disabled]="code.invalid"
-      >
-        Активировать
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <app-auth-button 
+    text="Активировать" 
+    type="button"
+    [isDisabled]="code.invalid"
+    (submit)="onSubmit()"
+  ></app-auth-button>
 </ion-content>

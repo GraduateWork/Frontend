@@ -1,0 +1,22 @@
+<ion-row class="ion-justify-content-center ion-margin-bottom">
+  <ion-col size="auto">
+    <ion-button 
+      class="linkWithLine" 
+      size="small" 
+      fill="clear" 
+      color="secondary"
+      [routerLink]="[link]"
+    >
+      {{ linkText }}
+    </ion-button>
+  </ion-col>
+</ion-row>
+<ng-container *ngIf="greetText">
+  <ion-row class="ion-justify-content-center ion-margin-bottom">
+    <ion-col size="6" class="ion-text-center">
+      <ion-text>
+        {{ greetText }}
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ng-container>
