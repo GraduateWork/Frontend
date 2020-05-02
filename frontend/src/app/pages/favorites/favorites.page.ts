@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { FavoritesFacade } from './store/facade';
@@ -8,6 +8,7 @@ import { BaseEvent } from '../events/models/event.model';
   selector: 'app-favorites',
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesPage {
   readonly favorites$: Observable<BaseEvent[]>;

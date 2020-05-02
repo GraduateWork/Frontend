@@ -9,15 +9,15 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
-import { RootState } from '@store/root.state';
-import { LoginStep } from '@store/login/state';
+import { AuthStep, AuthState } from 'app/pages/auth/store/state';
+import { authStepSelector } from './store/selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
   constructor(
-    private store$: Store<RootState>,
+    private store$: Store<AuthState>,
     private router: Router,
   ) { }
 
@@ -25,19 +25,19 @@ export class AuthGuard implements CanActivate {
     return this.store$.pipe(
       take(1),
       map(rootState => {
-        const { loginStep } = rootState.login;
-        if (loginStep === LoginStep.SignIn) {
+        const authStep = authStepSelector(rootState);
+        if (authStep === AuthStep.SignIn) {
           return true;
         }
 
-        switch (loginStep) {
-          case LoginStep.None:
+        switch (authStep) {
+          case AuthStep.None:
             this.router.navigate(['/auth/sign-in']);
             break;
-          case LoginStep.SignUp:
+          case AuthStep.SignUp:
             this.router.navigate(['/auth/activation']);
             break;
-          case LoginStep.Activation:
+          case AuthStep.Activation:
             this.router.navigate(['/auth/sign-in']);
             break;
         }

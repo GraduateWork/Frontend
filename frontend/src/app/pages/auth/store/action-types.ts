@@ -1,4 +1,4 @@
-export const prefix = '[Login]';
+export const prefix = '[Auth]';
 
 export const SIGN_UP_STARTED = `${prefix} Sign Up Started`;
 export const SIGN_UP_DONE = `${prefix} Sign Up Done`;

@@ -2,21 +2,21 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { SignUpData } from '@models/sign-up.model';
+import { SignUpData } from '../models/sign-up.model';
+import { SignInData } from '../models/sign-in.model';
 import { User } from '@models/user.model';
-import { SignInData } from '@models/sign-in.model';
-import { RootState } from '@store/root.state';
 
-import { userSelector, isSignInSelector } from './login.selectors';
-import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './login.actions';
+import { userSelector, isSignInSelector } from './selectors';
+import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './actions';
+import { AuthState } from './state';
 
 @Injectable({
   providedIn: 'root',
-}) export class LoginFacade {
+}) export class AuthFacade {
   readonly user$: Observable<User>;
   readonly isSignIn$: Observable<boolean>;
 
-  constructor(private store$: Store<RootState>) {
+  constructor(private store$: Store<AuthState>) {
     this.user$ = this.store$.pipe(select(userSelector));
     this.isSignIn$ = this.store$.pipe(select(isSignInSelector));
   }

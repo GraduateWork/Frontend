@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginFacade } from '@store/login/facade';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
   readonly isSignIn$: Observable<boolean>;
 
-  constructor(private loginFacade: LoginFacade) {
-    this.isSignIn$ = loginFacade.isSignIn$;
+  constructor(private authFacade: AuthFacade) {
+    this.isSignIn$ = authFacade.isSignIn$;
   }
 
   ngOnInit() {}

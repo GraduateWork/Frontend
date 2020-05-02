@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginFacade } from '@store/login/facade';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 
 import { BaseEvent } from '../../models/event.model';
 import { EventsFacade } from '../../store/facade';
@@ -18,10 +18,10 @@ export class EventListPage implements OnInit {
 
   constructor(
     private readonly eventsFacade: EventsFacade,
-    private readonly loginFacade: LoginFacade,
+    private readonly authFacade: AuthFacade,
   ) {
     this.events$ = this.eventsFacade.events$;
-    this.isSignIn$ = this.loginFacade.isSignIn$;
+    this.isSignIn$ = this.authFacade.isSignIn$;
   }
 
   ngOnInit() {

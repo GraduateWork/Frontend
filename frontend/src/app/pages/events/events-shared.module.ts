@@ -12,7 +12,6 @@ import { FormatEventDatePipe } from './pipes/format-event-date.pipe';
   ],
   imports: [
     SharedModule,
-    StoreModule,
   ],
   exports: [
     SharedModule,
