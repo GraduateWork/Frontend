@@ -11,6 +11,3 @@ export const SIGN_IN_DONE = `${prefix} Sign In Done`;
 
 export const SIGN_OUT_STARTED = `${prefix} Sign Out Started`;
 export const SIGN_OUT_DONE = `${prefix} Sign Out Done`;
-
-export const CHANGE_IS_SIGN_IN = `${prefix} Change Is Sign In`;
-export const CHANGE_IS_ACTIVATED = `${prefix} Change Is Activated`;
