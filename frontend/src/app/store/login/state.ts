@@ -1,13 +1,18 @@
 import { User } from '@models/user.model';
 
+export enum LoginStep {
+  None,
+  SignUp,
+  Activation,
+  SignIn,
+}
+
 export interface LoginState {
-  isSignIn: boolean;
-  isActivated: boolean;
+  loginStep: LoginStep;
   user: User;
 }
 
 export const initialState: LoginState = {
-  isSignIn: false,
-  isActivated: false,
+  loginStep: LoginStep.None,
   user: null,
 };

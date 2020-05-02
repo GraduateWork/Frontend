@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
 import { RootState } from '@store/root.state';
-import { isSignInNeededSelector } from '@store/login/login.selectors';
+import { LoginStep } from '@store/login/state';
 
 @Injectable({
   providedIn: 'root',
@@ -25,17 +25,21 @@ export class AuthGuard implements CanActivate {
     return this.store$.pipe(
       take(1),
       map(rootState => {
-        const { user, isSignIn, isActivated } = rootState.login;
-        if (isSignIn) {
+        const { loginStep } = rootState.login;
+        if (loginStep === LoginStep.SignIn) {
           return true;
         }
 
-        if (!user) {
-          this.router.navigate(['/auth/sign-in']);
-        } else if (!isActivated) {
-          this.router.navigate(['/auth/activation']);
-        } else if (isSignInNeededSelector(rootState)) {
-          this.router.navigate(['/auth/sign-in']);
+        switch (loginStep) {
+          case LoginStep.None:
+            this.router.navigate(['/auth/sign-in']);
+            break;
+          case LoginStep.SignUp:
+            this.router.navigate(['/auth/activation']);
+            break;
+          case LoginStep.Activation:
+            this.router.navigate(['/auth/sign-in']);
+            break;
         }
 
         return false;
