@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-import { SignUpData } from '@models/sign-up.model';
+import { SignUpData } from 'app/pages/auth/models/sign-up.model';
 import { User } from '@models/user.model';
-import { SignInData } from '@models/sign-in.model';
+import { SignInData } from 'app/pages/auth/models/sign-in.model';
 import * as types from './action-types';
 
 export const signUpStarted = createAction(types.SIGN_UP_STARTED, props<SignUpData>());
