@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -8,6 +8,7 @@ import { User } from '@models/user.model';
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfilePage implements OnInit {
   user$: Observable<User>;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -7,6 +7,7 @@ import { AuthFacade } from 'app/pages/auth/store/facade';
   selector: 'app-activation',
   templateUrl: './activation.page.html',
   styleUrls: ['./activation.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivationPage implements OnInit {
   code = new FormControl('', Validators.required);

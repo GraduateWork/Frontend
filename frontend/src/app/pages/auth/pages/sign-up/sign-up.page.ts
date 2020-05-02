@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -7,6 +7,7 @@ import { AuthFacade } from 'app/pages/auth/store/facade';
   selector: 'app-sign-up',
   templateUrl: './sign-up.page.html',
   styleUrls: ['./sign-up.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpPage implements OnInit {
   passwordType = 'password';

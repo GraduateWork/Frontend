@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-auth-button',
   templateUrl: './auth-button.component.html',
   styleUrls: ['./auth-button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthButtonComponent {
   @Input() readonly text: string;
