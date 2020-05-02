@@ -16,7 +16,6 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
   ],
   imports: [
     SharedModule,
-    StoreModule,
   ],
   exports: [
     SharedModule,
