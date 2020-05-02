@@ -1,5 +1,7 @@
 import { User } from '@models/user.model';
 
+export const featureKey = 'login';
+
 export enum LoginStep {
   None,
   SignUp,

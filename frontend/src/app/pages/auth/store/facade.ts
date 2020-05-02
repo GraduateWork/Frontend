@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 import { SignUpData } from '@models/sign-up.model';
 import { User } from '@models/user.model';
 import { SignInData } from '@models/sign-in.model';
-import { RootState } from '@store/root.state';
 
-import { userSelector, isSignInSelector } from './login.selectors';
-import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './login.actions';
+import { userSelector, isSignInSelector } from './selectors';
+import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './actions';
+import { LoginState } from './state';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ import { signOutStarted, signUpStarted, signInStarted, activationStarted } from 
   readonly user$: Observable<User>;
   readonly isSignIn$: Observable<boolean>;
 
-  constructor(private store$: Store<RootState>) {
+  constructor(private store$: Store<LoginState>) {
     this.user$ = this.store$.pipe(select(userSelector));
     this.isSignIn$ = this.store$.pipe(select(isSignInSelector));
   }

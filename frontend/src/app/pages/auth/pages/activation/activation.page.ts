@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { LoginFacade } from '@store/login/facade';
+import { LoginFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-activation',

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { SignUpData } from '@models/sign-up.model';
 import { SignInData } from '@models/sign-in.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,30 +14,34 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   signUp(signUpData: SignUpData) {
-    return this.http.post(
-      `${this.serverUrl}/signUp`,
-      { ...signUpData },
-    );
+    return of(true);
+    // return this.http.post(
+    //   `${this.serverUrl}/signUp`,
+    //   { ...signUpData },
+    // );
   }
 
   activation(code: string, username: string) {
-    return this.http.post(
-      `${this.serverUrl}/activation`,
-      { code, username },
-    );
+    return of(true);
+    // return this.http.post(
+    //   `${this.serverUrl}/activation`,
+    //   { code, username },
+    // );
   }
 
   signIn(signInData: SignInData) {
-    return this.http.post(
-      `${this.serverUrl}/login`,
-      { ...signInData },
-    );
+    return of(true);
+    // return this.http.post(
+    //   `${this.serverUrl}/login`,
+    //   { ...signInData },
+    // );
   }
 
   signOut() {
-    return this.http.post(
-      `${this.serverUrl}/logout`,
-      null
-    );
+    return of(true);
+    // return this.http.post(
+    //   `${this.serverUrl}/logout`,
+    //   null
+    // );
   }
 }

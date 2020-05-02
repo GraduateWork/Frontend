@@ -1,5 +1,3 @@
-import { LoginEffects } from './login/login.effects';
+import { LoginEffects } from '../pages/auth/store/effects';
 
-export const rootEffects = [
-  LoginEffects,
-];
+export const rootEffects = [];

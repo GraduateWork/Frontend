@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginFacade } from '@store/login/facade';
+import { LoginFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-header',

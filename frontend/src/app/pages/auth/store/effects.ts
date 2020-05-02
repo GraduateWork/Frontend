@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { map, switchMap, catchError, tap, withLatestFrom } from 'rxjs/operators';
 
-import { RootState } from '@store/root.state';
 import {
   signUpStarted,
   signUpDone,
@@ -15,9 +14,11 @@ import {
   signOutDone,
   activationStarted,
   activationDone,
-} from '@store/login/login.actions';
+} from 'app/pages/auth/store/actions';
 import { AuthService } from 'app/pages/auth/auth.service';
 import { setError } from '@store/error/actions';
+import { LoginState } from './state';
+import { userSelector } from './selectors';
 
 @Injectable()
 export class LoginEffects {
@@ -41,7 +42,7 @@ export class LoginEffects {
     ofType(activationStarted),
     withLatestFrom(this.store$),
     switchMap(([{ type, payload }, state]) => {
-      const { username } = state.login.user;
+      const { username } = userSelector(state);
       return this.authService.activation(payload, username).pipe(
         map(response => {
           return activationDone();
@@ -113,7 +114,7 @@ export class LoginEffects {
 
 
   constructor(
-    private store$: Store<RootState>,
+    private store$: Store<LoginState>,
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
