@@ -7,17 +7,11 @@ const _loginReducer = createReducer(initialState,
   on(actions.signUpDone, (state, { type, ...payload }) => {
     return { ...state, user: { ...payload } };
   }),
-  on(actions.activationDone, (state, { type, ...payload }) => {
-    return { ...state, user: { ...payload } };
-  }),
-  on(actions.changeIsSignIn, (state, { payload }) => {
-    return { ...state, isSignIn: payload };
-  }),
-  on(actions.changeIsActivated, (state,{ payload } ) => {
-    return { ...state, isActivated: payload };
+  on(actions.activationDone, (state) => {
+    return { ...state, isActivated: true };
   }),
   on(actions.signInDone, (state, { type, ...payload }) => {
-    return { ...state, user: { ...payload } };
+    return { ...state, user: { ...payload }, isSignIn: true };
   }),
   on(actions.signOutDone, () => {
     return { ...initialState };
