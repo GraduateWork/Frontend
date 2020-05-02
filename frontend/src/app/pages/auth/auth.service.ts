@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { SignUpData } from '@models/sign-up.model';
-import { SignInData } from '@models/sign-in.model';
+import { SignUpData } from './models/sign-up.model';
+import { SignInData } from './models/sign-in.model';
 import { of } from 'rxjs';
 
 @Injectable({

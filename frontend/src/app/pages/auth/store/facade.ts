@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { SignUpData } from 'app/pages/auth/models/sign-up.model';
+import { SignUpData } from '../models/sign-up.model';
+import { SignInData } from '../models/sign-in.model';
 import { User } from '@models/user.model';
-import { SignInData } from 'app/pages/auth/models/sign-in.model';
 
 import { userSelector, isSignInSelector } from './selectors';
 import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './actions';
