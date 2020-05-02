@@ -61,13 +61,33 @@
               "buildOptimizer": true,
               "budgets": [
                 {
+                  "type": "bundle",
+                  "name": "main",
+                  "baseline": "600kb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "100kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "styles",
+                  "baseline": "25kb",
+                  "maximumWarning": "5kb",
+                  "maximumError": "10kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                },
+                {
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "type": "all",
+                  "baseline": "3.3mb",
+                  "maximumWarning": "50kb",
+                  "maximumError": "100kb"
                 }
               ]
             },
