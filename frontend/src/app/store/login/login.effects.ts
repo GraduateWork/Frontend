@@ -27,7 +27,7 @@ export class LoginEffects {
       return this.authService.signUp(payload).pipe(
         map(response => {
           return signUpDone({
-            username: payload.username,
+            username: payload.username
           });
         }),
         catchError(error => {

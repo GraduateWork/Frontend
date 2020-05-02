@@ -1,14 +1,12 @@
 import { createSelector } from '@ngrx/store';
+
 import { RootState } from '@store/root.state';
+import { LoginStep } from './state';
 
 export const userSelector = (state: RootState) => state.login.user;
-export const isSignInSelector = (state: RootState) => state.login.isSignIn;
-export const isActivatedSelector = (state: RootState) => state.login.isActivated;
+export const loginStepSelector = (state: RootState) => state.login.loginStep;
 
-export const isSignInNeededSelector = createSelector(
-  userSelector,
-  isActivatedSelector,
-  (user, isActivated) => {
-    return user && isActivated;
-  }
+export const isSignInSelector = createSelector(
+  loginStepSelector,
+  (step) => step === LoginStep.SignIn,
 );
