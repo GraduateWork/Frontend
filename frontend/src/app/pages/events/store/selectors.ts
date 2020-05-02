@@ -1,9 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { RootState } from '@store/root.state';
 import { EventsState, featureKey } from './state';
 
-export const selectFeature = createFeatureSelector<RootState, EventsState>(featureKey);
+export const selectFeature = createFeatureSelector<EventsState>(featureKey);
 
 export const eventsSelector = createSelector(
   selectFeature,
