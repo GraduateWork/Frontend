@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { LoginFacade } from 'app/pages/auth/store/facade';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +18,7 @@ export class SignUpPage implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private loginFacade: LoginFacade) { }
+  constructor(private authFacade: AuthFacade) { }
 
   ngOnInit() {
   }
@@ -27,7 +27,7 @@ export class SignUpPage implements OnInit {
     const username: string = this.signUpForm.get('username').value;
     const email: string = this.signUpForm.get('email').value;
     const password: string = this.signUpForm.get('password').value;
-    this.loginFacade.signUp({ username, email, password });
+    this.authFacade.signUp({ username, email, password });
   }
 
   togglePassword() {

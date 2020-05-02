@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginFacade } from 'app/pages/auth/store/facade';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 import { User } from '@models/user.model';
 
 @Component({
@@ -12,14 +12,14 @@ import { User } from '@models/user.model';
 export class ProfilePage implements OnInit {
   user$: Observable<User>;
 
-  constructor(private loginFacade: LoginFacade) {
-    this.user$ = this.loginFacade.user$;
+  constructor(private authFacade: AuthFacade) {
+    this.user$ = this.authFacade.user$;
   }
 
   ngOnInit() {
   }
 
   onSignOut() {
-    this.loginFacade.signOut();
+    this.authFacade.signOut();
   }
 }

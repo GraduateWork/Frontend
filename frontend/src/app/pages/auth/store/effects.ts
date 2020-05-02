@@ -17,11 +17,11 @@ import {
 } from 'app/pages/auth/store/actions';
 import { AuthService } from 'app/pages/auth/auth.service';
 import { setError } from '@store/error/actions';
-import { LoginState } from './state';
+import { AuthState } from './state';
 import { userSelector } from './selectors';
 
 @Injectable()
-export class LoginEffects {
+export class AuthEffects {
   signUpEffect$ = createEffect(() => this.actions$.pipe(
     ofType(signUpStarted),
     switchMap(({ type, ...payload }) => {
@@ -114,7 +114,7 @@ export class LoginEffects {
 
 
   constructor(
-    private store$: Store<LoginState>,
+    private store$: Store<AuthState>,
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,

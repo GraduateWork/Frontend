@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
-import { LoginFacade } from 'app/pages/auth/store/facade';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-activation',
@@ -11,13 +11,13 @@ import { LoginFacade } from 'app/pages/auth/store/facade';
 export class ActivationPage implements OnInit {
   code = new FormControl('', Validators.required);
 
-  constructor(private loginFacade: LoginFacade) { }
+  constructor(private authFacade: AuthFacade) { }
 
   ngOnInit() {}
 
   onSubmit() {
     const code: string = this.code.value;
-    this.loginFacade.activation(code);
+    this.authFacade.activation(code);
   }
 
 }

@@ -8,15 +8,15 @@ import { User } from '@models/user.model';
 
 import { userSelector, isSignInSelector } from './selectors';
 import { signOutStarted, signUpStarted, signInStarted, activationStarted } from './actions';
-import { LoginState } from './state';
+import { AuthState } from './state';
 
 @Injectable({
   providedIn: 'root',
-}) export class LoginFacade {
+}) export class AuthFacade {
   readonly user$: Observable<User>;
   readonly isSignIn$: Observable<boolean>;
 
-  constructor(private store$: Store<LoginState>) {
+  constructor(private store$: Store<AuthState>) {
     this.user$ = this.store$.pipe(select(userSelector));
     this.isSignIn$ = this.store$.pipe(select(isSignInSelector));
   }

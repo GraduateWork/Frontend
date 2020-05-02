@@ -1,20 +1,20 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { LoginStep, LoginState, featureKey } from './state';
+import { AuthStep, AuthState, featureKey } from './state';
 
-export const selectFeature = createFeatureSelector<LoginState>(featureKey);
+export const selectFeature = createFeatureSelector<AuthState>(featureKey);
 
 export const userSelector = createSelector(
   selectFeature,
-  (state: LoginState) => state.user,
+  (state: AuthState) => state.user,
 );
 
-export const loginStepSelector = createSelector(
+export const authStepSelector = createSelector(
   selectFeature,
-  (state: LoginState) => state ? state.loginStep : LoginStep.None,
+  (state: AuthState) => state ? state.authStep : AuthStep.None,
 );
 
 export const isSignInSelector = createSelector(
   selectFeature,
-  (state: LoginState) => state ? state.loginStep === LoginStep.SignIn : false,
+  (state: AuthState) => state ? state.authStep === AuthStep.SignIn : false,
 );
