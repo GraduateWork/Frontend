@@ -1,11 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
 
 import { EventsFacade } from '../../store/facade';
 import { BaseEvent } from '../../models/event.model';
+import { EventsService } from '../../events.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -20,6 +22,7 @@ export class EventDetailPage implements OnInit {
 
   constructor(
     private readonly eventsFacade: EventsFacade,
+    private readonly eventsService: EventsService,
     private readonly authFacade: AuthFacade,
     private readonly route: ActivatedRoute
   ) {
@@ -29,6 +32,11 @@ export class EventDetailPage implements OnInit {
   ngOnInit() {
     const eventId: number = +this.route.snapshot.params.eventId;
     this.event$ = this.eventsFacade.getEvent(eventId);
+    this.isSignIn$.pipe(take(1)).subscribe(isSignIn => {
+      if (isSignIn) {
+        this.eventsService.view(eventId).subscribe();
+      }
+    });
   }
 
   onFavoriteClick(eventId: number) {
