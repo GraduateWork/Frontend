@@ -42,4 +42,8 @@ export class EventDetailPage implements OnInit {
   onFavoriteClick(eventId: number) {
     this.eventsFacade.updateFavorite(eventId);
   }
+
+  onSourceClick(event: BaseEvent) {
+    window.location.href = event.source;
+  }
 }
