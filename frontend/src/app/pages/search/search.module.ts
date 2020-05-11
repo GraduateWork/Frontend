@@ -1,12 +1,14 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { SearchPage } from './search.page';
+import { SearchRoutingModule } from './search-routing.module';
+import { StoreModule } from './store/store.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { SearchPage } from './search.page';
 
 @NgModule({
   imports: [
-    RouterModule.forChild([{ path: '', component: SearchPage }]),
+    SearchRoutingModule,
+    StoreModule,
     SharedModule,
   ],
   declarations: [SearchPage]
