@@ -1,9 +1,12 @@
 {
-  "genres": "Жанры",
+  "genres": "Жанр",
   "year": "Год",
-  "countries": "Страны",
+  "countries": "Страна",
   "duration": "Длительность",
   "director": "Режиссёр",
-  "cast": "Актеры",
-  "rating": "Рейтинг"
+  "cast": "В ролях",
+  "rating": "Рейтинг",
+  "originalName": "Оригинальное название",
+  "producer": "Продюсер",
+  "ageLimit": "Возрастное ограничение"
 }
