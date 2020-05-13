@@ -4,6 +4,16 @@
 }
 
 .event-border {
-  border: 1px solid #B6B6B6;
+  border: 1px solid var(--ion-color-primary-grey);
   border-radius: 0.4rem;
+}
+
+// TODO create shared file for events scss
+ion-badge {
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+  --padding-bottom: 0.5rem;
+  --padding-end: 0.5rem;
+  --padding-start: 0.5rem;
+  --padding-top: 0.5rem;
 }

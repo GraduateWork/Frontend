@@ -6,7 +6,9 @@ export const selectFeature = createFeatureSelector<EventsState>(featureKey);
 
 export const eventsSelector = createSelector(
   selectFeature,
-  (state: EventsState) => state.events,
+  // ternary operator needed for search.page (recommended for you, local dev)
+  // will be an error if you never watched events list page
+  (state: EventsState) => state ? state.events : [],
 );
 
 export const eventSelector = createSelector(

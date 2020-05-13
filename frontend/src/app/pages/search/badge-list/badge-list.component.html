@@ -1,0 +1,12 @@
+<ion-text class="ion-text-center ion-margin">
+  <h6>{{ title }}</h6>
+</ion-text>
+<ion-grid class="badge-list">
+  <ion-row class="ion-justify-content-around">
+    <ng-container *ngFor="let badge of badgeList">
+      <ion-col class="badge-list-event ion-text-center" size="12">
+        <ion-badge>{{ badge.title }}</ion-badge>
+      </ion-col>
+    </ng-container>
+  </ion-row>
+</ion-grid>

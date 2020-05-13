@@ -4,10 +4,12 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './components/header/header.component';
+import { SmallEventListComponent } from './components/small-event-list/small-event-list.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    SmallEventListComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
     FormsModule,
     ReactiveFormsModule,
     HeaderComponent,
+    SmallEventListComponent,
   ]
 })
 export class SharedModule { }

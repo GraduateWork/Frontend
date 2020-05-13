@@ -1,0 +1,5 @@
+// overflow is needed to override shadow dom
+.rounded {
+  border-radius: 0.4rem;
+  overflow: hidden;
+}

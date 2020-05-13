@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -9,7 +9,7 @@ import { AuthFacade } from 'app/pages/auth/store/facade';
   styleUrls: ['./sign-in.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInPage implements OnInit {
+export class SignInPage {
   passwordType = 'password';
   isPasswordShown = false;
 
@@ -19,8 +19,6 @@ export class SignInPage implements OnInit {
   });
 
   constructor(private authFacade: AuthFacade) { }
-
-  ngOnInit() {}
 
   onSubmit() {
     const username = this.signInForm.get('username').value;

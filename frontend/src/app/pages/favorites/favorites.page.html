@@ -4,16 +4,7 @@
     <h6>Мои события</h6>
   </ion-text>
   <div class="divider"></div>
-  <ion-grid *ngIf="favorites$ | async as favorites">
-    <ion-row *ngFor="let favorite of favorites">
-      <ion-col size="2" [routerLink]="['/events', favorite.eventId]">
-        <ion-img [src]="favorite.imgSrc" class="rounded"></ion-img>
-      </ion-col>
-      <ion-col size="10">
-        <ion-text>
-          <h6 class="mediumFont">{{ favorite.title }}</h6>
-        </ion-text>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <app-small-event-list 
+    [events]="(favorites$ | async)">
+  </app-small-event-list>
 </ion-content>

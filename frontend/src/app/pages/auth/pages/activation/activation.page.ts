@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -9,12 +9,10 @@ import { AuthFacade } from 'app/pages/auth/store/facade';
   styleUrls: ['./activation.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ActivationPage implements OnInit {
+export class ActivationPage {
   code = new FormControl('', Validators.required);
 
   constructor(private authFacade: AuthFacade) { }
-
-  ngOnInit() {}
 
   onSubmit() {
     const code: string = this.code.value;
