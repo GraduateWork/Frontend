@@ -10,10 +10,3 @@ export const eventsSelector = createSelector(
   // will be an error if you never watched events list page
   (state: EventsState) => state ? state.events : [],
 );
-
-export const eventSelector = createSelector(
-  selectFeature,
-  (state: EventsState, eventId: number) => {
-    return state.events.find(event => event.eventId === eventId);
-  },
-);

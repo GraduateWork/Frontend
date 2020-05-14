@@ -16,7 +16,7 @@ import { EventsService } from '../../events.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventDetailPage implements OnInit {
-  event$: Observable<BaseEvent>;
+  event: BaseEvent;
   readonly isSignIn$: Observable<boolean>;
   readonly objectKeys = Object.keys;
 
@@ -30,8 +30,10 @@ export class EventDetailPage implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.pipe(take(1)).subscribe((data: { event: BaseEvent }) => {
+      this.event = data.event;
+    });
     const eventId: number = +this.route.snapshot.params.eventId;
-    this.event$ = this.eventsFacade.getEvent(eventId);
     this.isSignIn$.pipe(take(1)).subscribe(isSignIn => {
       if (isSignIn) {
         this.eventsService.view(eventId).subscribe();
