@@ -5,7 +5,7 @@
   <ion-row class="ion-justify-content-around">
     <ng-container *ngFor="let badge of badgeList">
       <ion-col class="badge-list-event ion-text-center" size="12">
-        <ion-badge>{{ badge.title }}</ion-badge>
+        <ion-badge [routerLink]="['/events', badge.eventId]">{{ badge.title }}</ion-badge>
       </ion-col>
     </ng-container>
   </ion-row>

@@ -11,8 +11,10 @@ ion-badge {
   --padding-top: 0.5rem;
 }
 
-ion-badge:active {
+ion-badge:active,
+ion-badge:focus {
   --background: var(--ion-color-secondary);
+  outline: none;
 }
 
 .badge-list {
