@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from './components/header/header.component';
 import { SmallEventListComponent } from './components/small-event-list/small-event-list.component';
+import { FavoriteEventComponent } from './components/favorite-event/favorite-event.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SmallEventListComponent,
+    FavoriteEventComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { SmallEventListComponent } from './components/small-event-list/small-eve
     ReactiveFormsModule,
     HeaderComponent,
     SmallEventListComponent,
+    FavoriteEventComponent,
   ]
 })
 export class SharedModule { }

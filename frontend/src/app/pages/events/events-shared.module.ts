@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '@shared/shared.module';
 import { StoreModule } from './store/store.module';
-import { FavoriteEventComponent } from './components/favorite-event/favorite-event.component';
 import { FormatEventDatePipe } from './pipes/format-event-date.pipe';
 
 @NgModule({
   declarations: [
-    FavoriteEventComponent,
     FormatEventDatePipe,
   ],
   imports: [
@@ -16,7 +14,6 @@ import { FormatEventDatePipe } from './pipes/format-event-date.pipe';
   exports: [
     SharedModule,
     StoreModule,
-    FavoriteEventComponent,
     FormatEventDatePipe,
   ],
 })
