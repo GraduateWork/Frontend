@@ -5,6 +5,9 @@
   </ion-text>
   <div class="divider"></div>
   <app-small-event-list 
-    [events]="(favorites$ | async)">
+    [events]="(favorites$ | async)"
+    [isSignIn]="true"
+    (favoriteClick)="onFavoriteClick($event)"
+  >
   </app-small-event-list>
 </ion-content>

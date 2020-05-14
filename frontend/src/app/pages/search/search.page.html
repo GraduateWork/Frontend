@@ -10,15 +10,20 @@
     <ion-item lines="none" class="search ion-margin">
       <ion-input
         type="text"
-        placeholder="Поиск..." 
-        #searchInput 
-        (input)="onSearchChange(searchInput.value.toString())"
+        placeholder="Поиск..."
+        [(ngModel)]="searchInput"
+        (keyup)="onSearchChange(searchInput)"
       ></ion-input>
       <ion-icon name="search-outline" slot="start"></ion-icon>
     </ion-item>
-    <ng-container *ngIf="searchInput.value">
+    <ng-container *ngIf="searchInput">
       <ng-container *ngIf="$.searchEvents.length !== 0">
-        <app-small-event-list [events]="$.searchEvents"></app-small-event-list>
+        <app-small-event-list 
+          [events]="$.searchEvents"
+          [isSignIn]="$.isSignIn"
+          (favoriteClick)="onFavoriteClick($event)"
+        >
+        </app-small-event-list>
       </ng-container>
       <ng-container *ngIf="$.searchEvents.length === 0 && !$.isLoadingEvents">
         <ion-text class="ion-text-center">
@@ -26,7 +31,7 @@
         </ion-text>
       </ng-container>
     </ng-container>
-    <ng-container *ngIf="!searchInput.value">
+    <ng-container *ngIf="!searchInput">
       <app-badge-list 
         title="Популярное сейчас:" 
         [badgeList]="$.popularNowEvents">

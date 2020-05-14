@@ -20,6 +20,8 @@ export class SearchPage {
   readonly recommendedEvents$: Observable<BaseEvent[]>;
   readonly isSignIn$: Observable<boolean>;
 
+  searchInput = '';
+
   constructor(
     private searchFacade: SearchFacade,
     private eventsFacade: EventsFacade,
@@ -36,6 +38,11 @@ export class SearchPage {
     this.searchFacade.getPopularNowEvents(3);
   }
 
+  ionViewWillLeave() {
+    this.searchInput = '';
+    this.searchFacade.clearSearchEvents();
+  }
+
   onSearchChange(searchString: string) {
     if (searchString.trim()) {
       this.searchFacade.getSearchEvents(searchString);
@@ -44,5 +51,10 @@ export class SearchPage {
         this.searchFacade.clearSearchEvents();
       }, 400);
     }
+  }
+
+  // TODO REFACTOR
+  onFavoriteClick(eventId: number) {
+    this.eventsFacade.updateFavorite(eventId);
   }
 }
