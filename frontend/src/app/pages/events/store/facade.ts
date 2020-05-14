@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { BaseEvent } from '../models/event.model';
 import { RootState } from '@store/root.state';
 import { getEventsStarted, updateFavorite } from './actions';
-import { eventsSelector, eventSelector } from './selectors';
+import { eventsSelector } from './selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -18,10 +18,6 @@ import { eventsSelector, eventSelector } from './selectors';
 
   getEvents(): void {
     this.store$.dispatch(getEventsStarted());
-  }
-
-  getEvent(eventId: number): Observable<BaseEvent> {
-    return this.store$.pipe(select(eventSelector, eventId));
   }
 
   updateFavorite(eventId: number): void {

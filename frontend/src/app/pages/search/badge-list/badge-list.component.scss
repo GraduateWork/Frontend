@@ -1,0 +1,27 @@
+ion-badge {
+  white-space: normal;
+  border: solid var(--ion-color-primary-grey);
+  border-radius: 2rem;
+  border-width: 1px;
+  --color: var(--ion-color-light-contrast);
+  --background: var(--ion-color-primary-contrast);
+  --padding-bottom: 0.5rem;
+  --padding-end: 0.5rem;
+  --padding-start: 0.5rem;
+  --padding-top: 0.5rem;
+}
+
+ion-badge:active,
+ion-badge:focus {
+  --background: var(--ion-color-secondary);
+  outline: none;
+}
+
+.badge-list {
+  margin: 0 2rem;
+  padding: 0;
+}
+
+.badge-list-event {
+  padding-top: 0;
+}

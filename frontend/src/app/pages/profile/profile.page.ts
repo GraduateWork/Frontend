@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
@@ -10,14 +10,11 @@ import { User } from '@models/user.model';
   styleUrls: ['./profile.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
   user$: Observable<User>;
 
   constructor(private authFacade: AuthFacade) {
     this.user$ = this.authFacade.user$;
-  }
-
-  ngOnInit() {
   }
 
   onSignOut() {

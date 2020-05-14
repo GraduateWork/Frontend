@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
-import { BaseEvent } from '../../models/event.model';
+import { BaseEvent } from 'app/pages/events/models/event.model';
 
 @Component({
   selector: 'app-favorite-event',

@@ -18,6 +18,17 @@ export class EventsService {
     );
   }
 
+  getEvent(eventId: number): Observable<BaseEvent> {
+    const params = new HttpParams().set('eventId', eventId.toString());
+    return this.http.get<BaseEvent>(
+      `${serverUrl}/event`,
+      {
+        responseType: 'json',
+        params,
+      }
+    );
+  }
+
   view(eventId: number) {
     const params = new HttpParams().set('eventId', eventId.toString());
     return this.http.post(

@@ -1,0 +1,20 @@
+<ion-grid>
+  <ion-row *ngFor="let event of events; trackBy: trackByEventId">
+    <ion-col size="2" [routerLink]="['/events', event.eventId]">
+      <ion-img [src]="event.imgSrc" class="rounded"></ion-img>
+    </ion-col>
+    <ion-col size="8">
+      <ion-text>
+        <h6 class="mediumFont">{{ event.title }}</h6>
+      </ion-text>
+    </ion-col>
+    <ion-col size="2">
+      <ng-container *ngIf="isSignIn">
+        <app-favorite-event 
+          [event]="event"
+          (favoriteClick)="onFavoriteClick($event)"
+      ></app-favorite-event>
+      </ng-container>
+    </ion-col>
+  </ion-row>
+</ion-grid>

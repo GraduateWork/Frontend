@@ -16,7 +16,7 @@ import { EventsService } from '../../events.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventDetailPage implements OnInit {
-  event$: Observable<BaseEvent>;
+  event: BaseEvent;
   readonly isSignIn$: Observable<boolean>;
   readonly objectKeys = Object.keys;
 
@@ -30,8 +30,10 @@ export class EventDetailPage implements OnInit {
   }
 
   ngOnInit() {
+    this.route.data.pipe(take(1)).subscribe((data: { event: BaseEvent }) => {
+      this.event = data.event;
+    });
     const eventId: number = +this.route.snapshot.params.eventId;
-    this.event$ = this.eventsFacade.getEvent(eventId);
     this.isSignIn$.pipe(take(1)).subscribe(isSignIn => {
       if (isSignIn) {
         this.eventsService.view(eventId).subscribe();
@@ -40,6 +42,13 @@ export class EventDetailPage implements OnInit {
   }
 
   onFavoriteClick(eventId: number) {
+    // TODO
+    // updateFavorite reducer doesn't work for detail page (work for event-list)
+    // previously I had event from event-list store, but now I request it from backend
+    this.event = {
+        ...this.event,
+        favorite: !this.event.favorite,
+    };
     this.eventsFacade.updateFavorite(eventId);
   }
 

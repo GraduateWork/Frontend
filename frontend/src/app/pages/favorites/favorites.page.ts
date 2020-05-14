@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { FavoritesFacade } from './store/facade';
 import { BaseEvent } from '../events/models/event.model';
+import { EventsFacade } from '../events/store/facade';
 
 @Component({
   selector: 'app-favorites',
@@ -13,7 +14,10 @@ import { BaseEvent } from '../events/models/event.model';
 export class FavoritesPage {
   readonly favorites$: Observable<BaseEvent[]>;
 
-  constructor(private favoritesFacade: FavoritesFacade) {
+  constructor(
+    private favoritesFacade: FavoritesFacade,
+    private eventsFacade: EventsFacade,
+  ) {
     this.favorites$ = favoritesFacade.favorites$;
   }
 
@@ -21,5 +25,10 @@ export class FavoritesPage {
   // (this component aren't destroyed after leaving it)
   ionViewWillEnter() {
     this.favoritesFacade.getFavorites();
+  }
+
+  // TODO REFACTOR
+  onFavoriteClick(eventId: number) {
+    this.eventsFacade.updateFavorite(eventId);
   }
 }
