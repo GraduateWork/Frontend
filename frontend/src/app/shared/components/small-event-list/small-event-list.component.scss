@@ -3,3 +3,8 @@
   border-radius: 0.4rem;
   overflow: hidden;
 }
+
+ion-col:active,
+ion-col:focus {
+  outline: none;
+}
