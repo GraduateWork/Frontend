@@ -42,6 +42,13 @@ export class EventDetailPage implements OnInit {
   }
 
   onFavoriteClick(eventId: number) {
+    // TODO
+    // updateFavorite reducer doesn't work for detail page (work for event-list)
+    // previously I had event from event-list store, but now I request it from backend
+    this.event = {
+        ...this.event,
+        favorite: !this.event.favorite,
+    };
     this.eventsFacade.updateFavorite(eventId);
   }
 
