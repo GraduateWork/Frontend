@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
-import { SearchRoutingModule } from './search-routing.module';
 import { StoreModule } from './store/store.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { SearchPage } from './search.page';
-import { BadgeListComponent } from './badge-list/badge-list.component';
+import { BadgeListComponent } from './components/badge-list/badge-list.component';
 
 @NgModule({
   imports: [
-    SearchRoutingModule,
+    RouterModule.forChild([
+      { path: '', component: SearchPage },
+    ]),
     StoreModule,
     SharedModule,
   ],
