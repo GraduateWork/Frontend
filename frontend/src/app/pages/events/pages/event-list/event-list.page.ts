@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthFacade } from 'app/pages/auth/store/facade';
-
 import { BaseEvent } from '../../models/event.model';
 import { EventsFacade } from '../../store/facade';
 
