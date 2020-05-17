@@ -26,7 +26,7 @@ export class AuthEffects {
     ofType(signUpStarted),
     switchMap(({ type, ...payload }) => {
       return this.authService.signUp(payload).pipe(
-        map(response => {
+        map(() => {
           return signUpDone({
             username: payload.username
           });
@@ -41,10 +41,10 @@ export class AuthEffects {
   activationEffect$ = createEffect(() => this.actions$.pipe(
     ofType(activationStarted),
     withLatestFrom(this.store$),
-    switchMap(([{ type, payload }, state]) => {
+    switchMap(([{ payload }, state]) => {
       const { username } = userSelector(state);
       return this.authService.activation(payload, username).pipe(
-        map(response => {
+        map(() => {
           return activationDone();
         }),
         catchError(error => {
@@ -58,7 +58,7 @@ export class AuthEffects {
     ofType(signInStarted),
     switchMap(({ type, ...payload }) => {
       return this.authService.signIn(payload).pipe(
-        map(response => {
+        map(() => {
           return signInDone({
             username: payload.username,
           });
@@ -72,9 +72,9 @@ export class AuthEffects {
 
   signOutEffect$ = createEffect(() => this.actions$.pipe(
     ofType(signOutStarted),
-    switchMap(action => {
+    switchMap(() => {
       return this.authService.signOut().pipe(
-        map(response => {
+        map(() => {
             return signOutDone();
         }),
         catchError(error => {

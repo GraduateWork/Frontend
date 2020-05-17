@@ -1,7 +1,13 @@
 import { createReducer, on, Action } from '@ngrx/store';
 
 import { BaseEvent } from 'app/pages/events/models/event.model';
-import { getSearchEventsDone, getPopularNowEventsDone, searchEventsClear, getSearchEventsStarted } from './actions';
+import {
+  getSearchEventsDone,
+  getPopularNowEventsDone,
+  searchEventsClear,
+  getSearchEventsStarted,
+  getRecommendedEventsDone,
+} from './actions';
 import { SearchState, initialState } from './state';
 
 function getSearchEventsHandler(state: SearchState, events: BaseEvent[]): SearchState {
@@ -16,18 +22,25 @@ function getPopularNowEventsHandler(state: SearchState, events: BaseEvent[]): Se
   return { ...state, popularNowEvents: [ ...events ] };
 }
 
+function getRecommendedEventsHandler(state: SearchState, events: BaseEvent[]): SearchState {
+  return { ...state, recommendedEvents: [ ...events ] };
+}
+
 const _searchReducer = createReducer(initialState,
-  on(getSearchEventsStarted, (state, { payload }) => {
+  on(getSearchEventsStarted, (state) => {
     return { ...state, isLoading: true };
   }),
   on(getSearchEventsDone, (state, { payload }) => {
     return getSearchEventsHandler(state, payload);
   }),
-  on(searchEventsClear, (state, action) => {
+  on(searchEventsClear, (state) => {
     return searchEventsClearHandler(state);
   }),
   on(getPopularNowEventsDone, (state, { payload }) => {
     return getPopularNowEventsHandler(state, payload);
+  }),
+  on(getRecommendedEventsDone, (state, { payload }) => {
+    return getRecommendedEventsHandler(state, payload);
   }),
 );
 

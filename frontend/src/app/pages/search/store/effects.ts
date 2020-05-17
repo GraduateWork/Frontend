@@ -3,7 +3,14 @@ import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, switchMap, catchError, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { getSearchEventsStarted, getSearchEventsDone, getPopularNowEventsStarted, getPopularNowEventsDone } from './actions';
+import {
+  getSearchEventsStarted,
+  getSearchEventsDone,
+  getPopularNowEventsStarted,
+  getPopularNowEventsDone,
+  getRecommendedEventsStarted,
+  getRecommendedEventsDone,
+} from './actions';
 import { setError } from '@store/error/actions';
 import { SearchService } from '../search.service';
 
@@ -31,6 +38,20 @@ export class SearchEffects {
       return this.searchService.getPopularNowEvents(payload).pipe(
         map(events => {
           return getPopularNowEventsDone({ payload: events });
+        }),
+        catchError(error => {
+          return of(setError({ message: error, time: new Date().getDate() }));
+        })
+      );
+    })
+  ));
+
+  getRecommendedEventsEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(getRecommendedEventsStarted),
+    switchMap(() => {
+      return this.searchService.getRecommendedEvents().pipe(
+        map(events => {
+          return getRecommendedEventsDone({ payload: events });
         }),
         catchError(error => {
           return of(setError({ message: error, time: new Date().getDate() }));

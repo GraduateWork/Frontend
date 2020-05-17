@@ -13,6 +13,6 @@ export class HeaderComponent {
   readonly isSignIn$: Observable<boolean>;
 
   constructor(private authFacade: AuthFacade) {
-    this.isSignIn$ = authFacade.isSignIn$;
+    this.isSignIn$ = this.authFacade.isSignIn$;
   }
 }

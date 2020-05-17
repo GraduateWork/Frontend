@@ -32,4 +32,11 @@ export class SearchService {
       },
     );
   }
+
+  getRecommendedEvents(): Observable<BaseEvent[]> {
+    return this.http.get<BaseEvent[]>(
+      `${serverUrl}/events`,
+      { responseType: 'json' }
+    );
+  }
 }

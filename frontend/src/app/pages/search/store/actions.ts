@@ -9,3 +9,6 @@ export const searchEventsClear = createAction(types.SEARCH_EVENTS_CLEAR);
 
 export const getPopularNowEventsStarted = createAction(types.GET_POPULAR_NOW_EVENTS_STARTED, props<{ payload: number }>());
 export const getPopularNowEventsDone = createAction(types.GET_POPULAR_NOW_EVENTS_DONE, props<{ payload: BaseEvent[] }>());
+
+export const getRecommendedEventsStarted = createAction(types.GET_RECOMMENDED_EVENTS_STARTED);
+export const getRecommendedEventsDone = createAction(types.GET_RECOMMENDED_EVENTS_DONE, props<{ payload: BaseEvent[] }>());
