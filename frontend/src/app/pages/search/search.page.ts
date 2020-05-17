@@ -4,6 +4,7 @@ import { SearchFacade } from './store/facade';
 import { BaseEvent } from '../events/models/event.model';
 import { Observable } from 'rxjs';
 import { AuthFacade } from '../auth/store/facade';
+import { LoadingFacade } from '@store/loading/facade';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,7 @@ import { AuthFacade } from '../auth/store/facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPage {
-  readonly isLoadingEvents$: Observable<boolean>;
+  readonly isLoading$: Observable<boolean>;
   readonly searchEvents$: Observable<BaseEvent[]>;
   readonly popularNowEvents$: Observable<BaseEvent[]>;
   readonly recommendedEvents$: Observable<BaseEvent[]>;
@@ -23,8 +24,9 @@ export class SearchPage {
   constructor(
     private searchFacade: SearchFacade,
     private authFacade: AuthFacade,
+    private loadingFacade: LoadingFacade,
   ) {
-    this.isLoadingEvents$ = this.searchFacade.isLoadingEvents;
+    this.isLoading$ = this.loadingFacade.isLoading$;
     this.searchEvents$ = this.searchFacade.searchEvents$;
     this.popularNowEvents$ = this.searchFacade.popularNowEvents$;
     this.recommendedEvents$ = this.searchFacade.recommendedEvents$;

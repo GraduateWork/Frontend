@@ -5,14 +5,13 @@ import {
   getSearchEventsDone,
   getPopularNowEventsDone,
   searchEventsClear,
-  getSearchEventsStarted,
   getRecommendedEventsDone,
   updateFavorite,
 } from './actions';
 import { SearchState, initialState } from './state';
 
 function getSearchEventsHandler(state: SearchState, events: BaseEvent[]): SearchState {
-  return { ...state, events: [ ...events ], isLoading: false };
+  return { ...state, events: [ ...events ] };
 }
 
 function searchEventsClearHandler(state: SearchState): SearchState {
@@ -46,9 +45,6 @@ function updateFavoriteHandler(state: SearchState, eventId: number): SearchState
 }
 
 const _searchReducer = createReducer(initialState,
-  on(getSearchEventsStarted, (state) => {
-    return { ...state, isLoading: true };
-  }),
   on(getSearchEventsDone, (state, { payload }) => {
     return getSearchEventsHandler(state, payload);
   }),

@@ -1,16 +1,14 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { RootState } from '@store/root.state';
-import { errorSelector } from '@store/error/selector';
 import { Error } from '@models/error.model';
-import { isLoadingSelector } from '@store/loading/selector';
+import { LoadingFacade } from '@store/loading/facade';
+import { ErrorFacade } from '@store/error/facade';
 
 
 @Component({
@@ -20,20 +18,21 @@ import { isLoadingSelector } from '@store/loading/selector';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  error$: Observable<Error>;
-  isLoading$: Observable<boolean>;
+  readonly error$: Observable<Error>;
+  readonly isLoading$: Observable<boolean>;
 
   constructor(
-    private store$: Store<RootState>,
     private toastController: ToastController,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private errorFacade: ErrorFacade,
+    private loadingFacade: LoadingFacade,
   ) {
     this.initializeApp();
 
-    this.error$ = this.store$.pipe(select(errorSelector));
-    this.isLoading$ = this.store$.pipe(select(isLoadingSelector));
+    this.error$ = this.errorFacade.error$;
+    this.isLoading$ = this.loadingFacade.isLoading$;
 
     this.error$.subscribe(async error => {
       if (error) {

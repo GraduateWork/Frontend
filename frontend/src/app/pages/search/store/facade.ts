@@ -4,25 +4,23 @@ import { Observable } from 'rxjs';
 
 import { BaseEvent } from 'app/pages/events/models/event.model';
 import { RootState } from '@store/root.state';
-import { 
+import {
   getSearchEventsStarted,
   getPopularNowEventsStarted,
   searchEventsClear,
   getRecommendedEventsStarted,
   updateFavorite,
 } from './actions';
-import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector, recommendedEventsSelector } from './selectors';
+import { searchEventsSelector, popularNowEventsSelector, recommendedEventsSelector } from './selectors';
 
 @Injectable({
   providedIn: 'root',
 }) export class SearchFacade {
-  readonly isLoadingEvents: Observable<boolean>;
   readonly searchEvents$: Observable<BaseEvent[]>;
   readonly popularNowEvents$: Observable<BaseEvent[]>;
   readonly recommendedEvents$: Observable<BaseEvent[]>;
 
   constructor(private readonly store$: Store<RootState>) {
-    this.isLoadingEvents = this.store$.pipe(select(isLoadingEventsSelector));
     this.searchEvents$ = this.store$.pipe(select(searchEventsSelector));
     this.popularNowEvents$ = this.store$.pipe(select(popularNowEventsSelector));
     this.recommendedEvents$ = this.store$.pipe(select(recommendedEventsSelector));
