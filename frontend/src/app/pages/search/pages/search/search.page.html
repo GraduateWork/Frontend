@@ -14,7 +14,7 @@
     ></ion-input>
     <ion-icon name="search-outline" slot="start"></ion-icon>
   </ion-item>
-  <ng-container *ngIf="searchInput.value.toString()">
+  <ng-container *ngIf="searchInput.value">
     <ng-container *ngIf="$.searchEvents.length !== 0">
       <app-small-event-list 
         [events]="$.searchEvents"
@@ -29,7 +29,7 @@
       </ion-text>
     </ng-container>
   </ng-container>
-  <ng-container *ngIf="!searchInput.value.toString()">
+  <ng-container *ngIf="!searchInput.value">
     <app-badge-list 
       title="Популярное сейчас:" 
       [badgeList]="$.popularNowEvents">
