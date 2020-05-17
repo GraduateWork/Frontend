@@ -13,4 +13,4 @@ import { FavoritesContainerPage } from './favorites-container.page';
     FavoritesContainerPage,
   ],
 })
-export class FavoritesModule { }
+export class FavoritesContainerModule { }

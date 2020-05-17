@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchPageModule)
+    loadChildren: () => import('./pages/search/search-container.module').then(m => m.SearchContainerModule)
   },
   {
     path: 'filter',
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'favorites',
-    loadChildren: () => import('./pages/favorites/favorites.module').then(m => m.FavoritesModule)
+    loadChildren: () => import('./pages/favorites/favorites-container.module').then(m => m.FavoritesContainerModule)
   },
   {
     path: 'profile',

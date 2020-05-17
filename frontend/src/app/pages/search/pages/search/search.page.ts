@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 
 import { SearchFacade } from './store/facade';
-import { BaseEvent } from '../events/models/event.model';
 import { Observable } from 'rxjs';
-import { AuthFacade } from '../auth/store/facade';
 import { LoadingFacade } from '@store/loading/facade';
+import { BaseEvent } from 'app/pages/events/models/event.model';
+import { AuthFacade } from 'app/pages/auth/store/facade';
 
 @Component({
   selector: 'app-search',
@@ -12,14 +12,12 @@ import { LoadingFacade } from '@store/loading/facade';
   styleUrls: ['search.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchPage {
+export class SearchPage implements OnInit, OnDestroy {
   readonly isLoading$: Observable<boolean>;
   readonly searchEvents$: Observable<BaseEvent[]>;
   readonly popularNowEvents$: Observable<BaseEvent[]>;
   readonly recommendedEvents$: Observable<BaseEvent[]>;
   readonly isSignIn$: Observable<boolean>;
-
-  searchInput = '';
 
   constructor(
     private searchFacade: SearchFacade,
@@ -33,13 +31,12 @@ export class SearchPage {
     this.isSignIn$ = this.authFacade.isSignIn$;
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.searchFacade.getPopularNowEvents(3);
     this.searchFacade.getRecommendedEvents(3);
   }
 
-  ionViewWillLeave() {
-    this.searchInput = '';
+  ngOnDestroy() {
     this.searchFacade.clearSearchEvents();
   }
 
@@ -49,7 +46,7 @@ export class SearchPage {
     } else {
       setTimeout(() => {
         this.searchFacade.clearSearchEvents();
-      }, 400);
+      }, 800);
     }
   }
 
