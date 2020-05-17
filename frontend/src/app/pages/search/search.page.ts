@@ -3,9 +3,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SearchFacade } from './store/facade';
 import { BaseEvent } from '../events/models/event.model';
 import { Observable } from 'rxjs';
-import { EventsFacade } from '../events/store/facade';
 import { AuthFacade } from '../auth/store/facade';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -24,13 +22,12 @@ export class SearchPage {
 
   constructor(
     private searchFacade: SearchFacade,
-    private eventsFacade: EventsFacade,
     private authFacade: AuthFacade,
   ) {
     this.isLoadingEvents$ = this.searchFacade.isLoadingEvents;
     this.searchEvents$ = this.searchFacade.searchEvents$;
     this.popularNowEvents$ = this.searchFacade.popularNowEvents$;
-    this.recommendedEvents$ = this.searchFacade.recommendedEvents$.pipe(map(events => [events[0], events[1], events[2]]));
+    this.recommendedEvents$ = this.searchFacade.recommendedEvents$;
     this.isSignIn$ = this.authFacade.isSignIn$;
   }
 
@@ -55,6 +52,6 @@ export class SearchPage {
   }
 
   onFavoriteClick(eventId: number) {
-    this.eventsFacade.updateFavorite(eventId);
+    this.searchFacade.updateFavorite(eventId);
   }
 }

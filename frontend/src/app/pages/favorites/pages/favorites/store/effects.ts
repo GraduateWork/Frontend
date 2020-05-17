@@ -19,15 +19,15 @@ export class FavoritesEventsEffects {
     }),
   ));
 
-    updateFavorite$ = createEffect(() => this.actions$.pipe(
-      ofType(updateFavorite),
-      switchMap(action => {
-        return this.favoritesService.updateFavorite(action.payload).pipe(
-          switchMap(() => EMPTY),
-          catchError(error => of(setError({ message: error, time: new Date().getDate() }))),
-        );
-      }),
-    ));
+  updateFavorite$ = createEffect(() => this.actions$.pipe(
+    ofType(updateFavorite),
+    switchMap(action => {
+      return this.favoritesService.updateFavorite(action.payload).pipe(
+        switchMap(() => EMPTY),
+        catchError(error => of(setError({ message: error, time: new Date().getDate() }))),
+      );
+    }),
+  ));
 
   constructor(
     private readonly actions$: Actions,

@@ -9,3 +9,6 @@ export const GET_POPULAR_NOW_EVENTS_DONE = `${prefix} Get Popular Now Events Don
 
 export const GET_RECOMMENDED_EVENTS_STARTED = `${prefix} Get Recommended Events Started`;
 export const GET_RECOMMENDED_EVENTS_DONE = `${prefix} Get Recommended Events Done`;
+
+export const UPDATE_FAVORITE = `${prefix} Update Favorite`;
+

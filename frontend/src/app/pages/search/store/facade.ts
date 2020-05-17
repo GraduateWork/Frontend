@@ -4,7 +4,13 @@ import { Observable } from 'rxjs';
 
 import { BaseEvent } from 'app/pages/events/models/event.model';
 import { RootState } from '@store/root.state';
-import { getSearchEventsStarted, getPopularNowEventsStarted, searchEventsClear, getRecommendedEventsStarted } from './actions';
+import { 
+  getSearchEventsStarted,
+  getPopularNowEventsStarted,
+  searchEventsClear,
+  getRecommendedEventsStarted,
+  updateFavorite,
+} from './actions';
 import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector, recommendedEventsSelector } from './selectors';
 
 @Injectable({
@@ -36,5 +42,9 @@ import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector
 
   clearSearchEvents(): void {
     this.store$.dispatch(searchEventsClear());
+  }
+
+  updateFavorite(eventId: number): void {
+    this.store$.dispatch(updateFavorite({ payload: eventId }));
   }
 }
