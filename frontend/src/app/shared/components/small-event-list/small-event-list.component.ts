@@ -18,17 +18,6 @@ export class SmallEventListComponent {
   }
 
   onFavoriteClick(eventId: number) {
-    this.events = this.events.map(event => {
-      if (event.eventId !== eventId) {
-        return event;
-      } else {
-        return {
-          ...event,
-          favorite: !event.favorite,
-        };
-      }
-    });
-
     this.favoriteClick.emit(eventId);
   }
 }

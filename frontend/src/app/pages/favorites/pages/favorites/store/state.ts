@@ -1,6 +1,6 @@
 import { BaseEvent } from 'app/pages/events/models/event.model';
 
-export const featureKey = 'favoritesEvents';
+export const featureKey = 'favorites';
 
 export interface FavoritesState {
   events: BaseEvent[];

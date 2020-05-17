@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { FavoritesRoutingModule } from './favorites-routing.module';
-import { StoreModule } from './store/store.module';
+import { FavoritesContainerRoutingModule } from './favorites-container-routing.module';
 import { SharedModule } from '@shared/shared.module';
-import { FavoritesPage } from './favorites.page';
+import { FavoritesContainerPage } from './favorites-container.page';
 
 @NgModule({
   imports: [
-    FavoritesRoutingModule,
-    StoreModule,
+    FavoritesContainerRoutingModule,
     SharedModule,
   ],
-  declarations: [FavoritesPage],
+  declarations: [
+    FavoritesContainerPage,
+  ],
 })
 export class FavoritesModule { }
