@@ -36,7 +36,7 @@ export class SearchPage {
 
   ionViewWillEnter() {
     this.searchFacade.getPopularNowEvents(3);
-    this.searchFacade.getRecommendedEvents();
+    this.searchFacade.getRecommendedEvents(3);
   }
 
   ionViewWillLeave() {

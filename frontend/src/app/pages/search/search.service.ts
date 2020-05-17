@@ -33,10 +33,14 @@ export class SearchService {
     );
   }
 
-  getRecommendedEvents(): Observable<BaseEvent[]> {
+  getRecommendedEvents(count: number): Observable<BaseEvent[]> {
+    const params = new HttpParams().set('count', count.toString());
     return this.http.get<BaseEvent[]>(
       `${serverUrl}/events`,
-      { responseType: 'json' }
+      {
+        responseType: 'json',
+        params,
+      }
     );
   }
 }

@@ -30,8 +30,8 @@ import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector
     this.store$.dispatch(getPopularNowEventsStarted({ payload: count }));
   }
 
-  getRecommendedEvents(): void {
-    this.store$.dispatch(getRecommendedEventsStarted());
+  getRecommendedEvents(count: number): void {
+    this.store$.dispatch(getRecommendedEventsStarted({ payload: count }));
   }
 
   clearSearchEvents(): void {

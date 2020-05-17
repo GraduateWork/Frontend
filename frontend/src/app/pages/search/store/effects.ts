@@ -48,8 +48,8 @@ export class SearchEffects {
 
   getRecommendedEventsEffect$ = createEffect(() => this.actions$.pipe(
     ofType(getRecommendedEventsStarted),
-    switchMap(() => {
-      return this.searchService.getRecommendedEvents().pipe(
+    switchMap(({ payload }) => {
+      return this.searchService.getRecommendedEvents(payload).pipe(
         map(events => {
           return getRecommendedEventsDone({ payload: events });
         }),
