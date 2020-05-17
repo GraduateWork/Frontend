@@ -18,7 +18,6 @@ export class SmallEventListComponent {
   }
 
   onFavoriteClick(eventId: number) {
-    // TODO refactor all adding to favorite logic !!!
     this.events = this.events.map(event => {
       if (event.eventId !== eventId) {
         return event;
