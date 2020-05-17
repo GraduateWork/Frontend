@@ -1,5 +1,5 @@
 <ng-container *ngIf="{
-  isLoadingEvents: isLoadingEvents$ | async,
+  isLoading: isLoading$ | async,
   searchEvents: searchEvents$ | async,
   popularNowEvents: popularNowEvents$ | async,
   recommendedEvents: recommendedEvents$ | async,
@@ -25,7 +25,7 @@
         >
         </app-small-event-list>
       </ng-container>
-      <ng-container *ngIf="$.searchEvents.length === 0 && !$.isLoadingEvents">
+      <ng-container *ngIf="$.searchEvents.length === 0 && !$.isLoading">
         <ion-text class="ion-text-center">
           <p>По вашему запросу ничего не найдено</p>
         </ion-text>

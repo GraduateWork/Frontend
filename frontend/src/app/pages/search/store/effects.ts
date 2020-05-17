@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
+import { of, EMPTY } from 'rxjs';
 import { map, switchMap, catchError, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import {
@@ -10,9 +10,11 @@ import {
   getPopularNowEventsDone,
   getRecommendedEventsStarted,
   getRecommendedEventsDone,
+  updateFavorite,
 } from './actions';
 import { setError } from '@store/error/actions';
 import { SearchService } from '../search.service';
+import { FavoritesService } from 'app/pages/favorites/pages/favorites/favorites.service';
 
 @Injectable()
 export class SearchEffects {
@@ -22,12 +24,8 @@ export class SearchEffects {
     distinctUntilChanged(),
     switchMap(({ payload }) => {
       return this.searchService.getSearchEvents(payload).pipe(
-        map(events => {
-          return getSearchEventsDone({ payload: events });
-        }),
-        catchError(error => {
-          return of(setError({ message: error, time: new Date().getDate() }));
-        }),
+        map(events => getSearchEventsDone({ payload: events })),
+        catchError(error => of(setError({ message: error, time: new Date().getDate() }))),
       );
     })
   ));
@@ -36,12 +34,8 @@ export class SearchEffects {
     ofType(getPopularNowEventsStarted),
     switchMap(({ payload }) => {
       return this.searchService.getPopularNowEvents(payload).pipe(
-        map(events => {
-          return getPopularNowEventsDone({ payload: events });
-        }),
-        catchError(error => {
-          return of(setError({ message: error, time: new Date().getDate() }));
-        })
+        map(events =>  getPopularNowEventsDone({ payload: events })),
+        catchError(error => of(setError({ message: error, time: new Date().getDate() })))
       );
     })
   ));
@@ -50,12 +44,18 @@ export class SearchEffects {
     ofType(getRecommendedEventsStarted),
     switchMap(({ payload }) => {
       return this.searchService.getRecommendedEvents(payload).pipe(
-        map(events => {
-          return getRecommendedEventsDone({ payload: events });
-        }),
-        catchError(error => {
-          return of(setError({ message: error, time: new Date().getDate() }));
-        })
+        map(events => getRecommendedEventsDone({ payload: events })),
+        catchError(error => of(setError({ message: error, time: new Date().getDate() })))
+      );
+    })
+  ));
+
+  updateFavorite$ = createEffect(() => this.actions$.pipe(
+    ofType(updateFavorite),
+    switchMap(action => {
+      return this.favoritesService.updateFavorite(action.payload).pipe(
+        switchMap(() => EMPTY),
+        catchError(error => of(setError({ message: error, time: new Date().getDate() })))
       );
     })
   ));
@@ -63,5 +63,6 @@ export class SearchEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly searchService: SearchService,
+    private readonly favoritesService: FavoritesService,
   ) {}
 }

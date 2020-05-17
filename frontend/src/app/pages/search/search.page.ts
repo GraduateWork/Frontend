@@ -3,9 +3,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SearchFacade } from './store/facade';
 import { BaseEvent } from '../events/models/event.model';
 import { Observable } from 'rxjs';
-import { EventsFacade } from '../events/store/facade';
 import { AuthFacade } from '../auth/store/facade';
-import { map } from 'rxjs/operators';
+import { LoadingFacade } from '@store/loading/facade';
 
 @Component({
   selector: 'app-search',
@@ -14,7 +13,7 @@ import { map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPage {
-  readonly isLoadingEvents$: Observable<boolean>;
+  readonly isLoading$: Observable<boolean>;
   readonly searchEvents$: Observable<BaseEvent[]>;
   readonly popularNowEvents$: Observable<BaseEvent[]>;
   readonly recommendedEvents$: Observable<BaseEvent[]>;
@@ -24,13 +23,13 @@ export class SearchPage {
 
   constructor(
     private searchFacade: SearchFacade,
-    private eventsFacade: EventsFacade,
     private authFacade: AuthFacade,
+    private loadingFacade: LoadingFacade,
   ) {
-    this.isLoadingEvents$ = this.searchFacade.isLoadingEvents;
+    this.isLoading$ = this.loadingFacade.isLoading$;
     this.searchEvents$ = this.searchFacade.searchEvents$;
     this.popularNowEvents$ = this.searchFacade.popularNowEvents$;
-    this.recommendedEvents$ = this.searchFacade.recommendedEvents$.pipe(map(events => [events[0], events[1], events[2]]));
+    this.recommendedEvents$ = this.searchFacade.recommendedEvents$;
     this.isSignIn$ = this.authFacade.isSignIn$;
   }
 
@@ -55,6 +54,6 @@ export class SearchPage {
   }
 
   onFavoriteClick(eventId: number) {
-    this.eventsFacade.updateFavorite(eventId);
+    this.searchFacade.updateFavorite(eventId);
   }
 }

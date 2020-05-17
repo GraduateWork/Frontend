@@ -12,3 +12,6 @@ export const getPopularNowEventsDone = createAction(types.GET_POPULAR_NOW_EVENTS
 
 export const getRecommendedEventsStarted = createAction(types.GET_RECOMMENDED_EVENTS_STARTED, props<{ payload: number }>());
 export const getRecommendedEventsDone = createAction(types.GET_RECOMMENDED_EVENTS_DONE, props<{ payload: BaseEvent[] }>());
+
+export const updateFavorite = createAction(types.UPDATE_FAVORITE, props<{ payload: number }>());
+
