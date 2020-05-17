@@ -6,13 +6,13 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { getEventsStarted, getEventsDone, updateFavorite } from './actions';
 import { setError } from '@store/error/actions';
 import { EventsService } from 'app/pages/events/events.service';
-import { FavoritesService } from 'app/pages/favorites/favories.service';
+import { FavoritesService } from 'app/pages/favorites/favorites.service';
 
 @Injectable()
 export class EventsEffects {
   getEventsEffect$ = createEffect(() => this.actions$.pipe(
     ofType(getEventsStarted),
-    switchMap(action => {
+    switchMap(() => {
       return this.eventsService.getEvents().pipe(
         map(events => {
           return getEventsDone({ payload: events });
@@ -28,7 +28,7 @@ export class EventsEffects {
     ofType(updateFavorite),
     switchMap(action => {
       return this.favoritesService.updateFavorite(action.payload).pipe(
-        switchMap(response => {
+        switchMap(() => {
           return EMPTY;
         }),
         catchError(error => {

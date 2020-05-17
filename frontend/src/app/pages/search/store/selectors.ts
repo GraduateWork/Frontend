@@ -18,3 +18,8 @@ export const popularNowEventsSelector = createSelector(
   selectFeature,
   (state: SearchState) => state.popularNowEvents,
 );
+
+export const recommendedEventsSelector = createSelector(
+  selectFeature,
+  (state: SearchState) => state.recommendedEvents,
+);

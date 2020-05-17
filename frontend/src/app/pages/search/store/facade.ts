@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 
 import { BaseEvent } from 'app/pages/events/models/event.model';
 import { RootState } from '@store/root.state';
-import { getSearchEventsStarted, getPopularNowEventsStarted, searchEventsClear } from './actions';
-import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector } from './selectors';
+import { getSearchEventsStarted, getPopularNowEventsStarted, searchEventsClear, getRecommendedEventsStarted } from './actions';
+import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector, recommendedEventsSelector } from './selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,13 @@ import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector
   readonly isLoadingEvents: Observable<boolean>;
   readonly searchEvents$: Observable<BaseEvent[]>;
   readonly popularNowEvents$: Observable<BaseEvent[]>;
+  readonly recommendedEvents$: Observable<BaseEvent[]>;
 
   constructor(private readonly store$: Store<RootState>) {
     this.isLoadingEvents = this.store$.pipe(select(isLoadingEventsSelector));
     this.searchEvents$ = this.store$.pipe(select(searchEventsSelector));
     this.popularNowEvents$ = this.store$.pipe(select(popularNowEventsSelector));
+    this.recommendedEvents$ = this.store$.pipe(select(recommendedEventsSelector));
   }
 
   getSearchEvents(searchString: string): void {
@@ -26,6 +28,10 @@ import { searchEventsSelector, popularNowEventsSelector, isLoadingEventsSelector
 
   getPopularNowEvents(count: number): void {
     this.store$.dispatch(getPopularNowEventsStarted({ payload: count }));
+  }
+
+  getRecommendedEvents(): void {
+    this.store$.dispatch(getRecommendedEventsStarted());
   }
 
   clearSearchEvents(): void {

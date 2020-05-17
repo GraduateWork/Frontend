@@ -6,3 +6,6 @@ export const SEARCH_EVENTS_CLEAR = `${prefix} Search Events Clear`;
 
 export const GET_POPULAR_NOW_EVENTS_STARTED = `${prefix} Get Popular Now Events Started`;
 export const GET_POPULAR_NOW_EVENTS_DONE = `${prefix} Get Popular Now Events Done`;
+
+export const GET_RECOMMENDED_EVENTS_STARTED = `${prefix} Get Recommended Events Started`;
+export const GET_RECOMMENDED_EVENTS_DONE = `${prefix} Get Recommended Events Done`;

@@ -30,12 +30,13 @@ export class SearchPage {
     this.isLoadingEvents$ = this.searchFacade.isLoadingEvents;
     this.searchEvents$ = this.searchFacade.searchEvents$;
     this.popularNowEvents$ = this.searchFacade.popularNowEvents$;
-    this.recommendedEvents$ = this.eventsFacade.events$.pipe(map(events => [events[0], events[1], events[2]]));
+    this.recommendedEvents$ = this.searchFacade.recommendedEvents$.pipe(map(events => [events[0], events[1], events[2]]));
     this.isSignIn$ = this.authFacade.isSignIn$;
   }
 
   ionViewWillEnter() {
     this.searchFacade.getPopularNowEvents(3);
+    //this.searchFacade.getRecommendedEvents();
   }
 
   ionViewWillLeave() {

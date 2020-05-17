@@ -6,10 +6,12 @@ export interface SearchState {
   isLoading: boolean;
   events: BaseEvent[];
   popularNowEvents: BaseEvent[];
+  recommendedEvents: BaseEvent[];
 }
 
 export const initialState: SearchState = {
   isLoading: false,
   events: [],
   popularNowEvents: [],
+  recommendedEvents: [],
 };

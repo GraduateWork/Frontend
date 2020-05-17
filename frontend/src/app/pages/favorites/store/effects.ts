@@ -5,13 +5,13 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 
 import { getFavoritesStarted, getFavoritesDone } from './actions';
 import { setError } from '@store/error/actions';
-import { FavoritesService } from '../favories.service';
+import { FavoritesService } from '../favorites.service';
 
 @Injectable()
 export class FavoritesEventsEffects {
   getFavoritesEffect$ = createEffect(() => this.actions$.pipe(
     ofType(getFavoritesStarted),
-    switchMap(action => {
+    switchMap(() => {
       return this.favoritesService.getFavorites().pipe(
         map(events => {
           return getFavoritesDone({ payload: events });
