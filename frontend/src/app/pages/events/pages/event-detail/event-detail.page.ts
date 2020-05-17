@@ -43,8 +43,8 @@ export class EventDetailPage implements OnInit {
 
   onFavoriteClick(eventId: number) {
     this.event = {
-        ...this.event,
-        favorite: !this.event.favorite,
+      ...this.event,
+      favorite: !this.event.favorite,
     };
     this.eventsFacade.updateFavorite(eventId);
   }

@@ -6,7 +6,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { getEventsStarted, getEventsDone, updateFavorite } from './actions';
 import { setError } from '@store/error/actions';
 import { EventsService } from 'app/pages/events/events.service';
-import { FavoritesService } from 'app/pages/favorites/favorites.service';
+import { FavoritesService } from 'app/pages/favorites/pages/favorites/favorites.service';
 
 @Injectable()
 export class EventsEffects {

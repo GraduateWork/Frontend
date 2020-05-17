@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { BaseEvent } from 'app/pages/events/models/event.model';
 import { RootState } from '@store/root.state';
-import { getFavoritesStarted } from './actions';
+import { getFavoritesStarted, updateFavorite } from './actions';
 import { favoritesSelector } from './selectors';
 
 @Injectable({
@@ -18,5 +18,9 @@ import { favoritesSelector } from './selectors';
 
   getFavorites() {
     this.store$.dispatch(getFavoritesStarted());
+  }
+
+  updateFavorite(eventId: number): void {
+    this.store$.dispatch(updateFavorite({ payload: eventId }));
   }
 }
