@@ -36,7 +36,7 @@ export class SearchPage {
 
   ionViewWillEnter() {
     this.searchFacade.getPopularNowEvents(3);
-    //this.searchFacade.getRecommendedEvents();
+    this.searchFacade.getRecommendedEvents();
   }
 
   ionViewWillLeave() {
@@ -54,7 +54,6 @@ export class SearchPage {
     }
   }
 
-  // TODO REFACTOR
   onFavoriteClick(eventId: number) {
     this.eventsFacade.updateFavorite(eventId);
   }

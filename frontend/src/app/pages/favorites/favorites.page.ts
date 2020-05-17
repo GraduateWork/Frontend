@@ -27,7 +27,6 @@ export class FavoritesPage {
     this.favoritesFacade.getFavorites();
   }
 
-  // TODO REFACTOR
   onFavoriteClick(eventId: number) {
     this.eventsFacade.updateFavorite(eventId);
   }
