@@ -3,3 +3,9 @@
     color: var(--ion-color-primary-dark);
   }
 }
+
+ion-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}

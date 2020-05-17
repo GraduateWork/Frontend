@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RootState } from '@store/root.state';
 import { errorSelector } from '@store/error/selector';
 import { Error } from '@models/error.model';
+import { isLoadingSelector } from '@store/loading/selector';
 
 
 @Component({
@@ -20,6 +21,7 @@ import { Error } from '@models/error.model';
 })
 export class AppComponent {
   error$: Observable<Error>;
+  isLoading$: Observable<boolean>;
 
   constructor(
     private store$: Store<RootState>,
@@ -31,6 +33,7 @@ export class AppComponent {
     this.initializeApp();
 
     this.error$ = this.store$.pipe(select(errorSelector));
+    this.isLoading$ = this.store$.pipe(select(isLoadingSelector));
 
     this.error$.subscribe(async error => {
       if (error) {
